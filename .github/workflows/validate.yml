@@ -128,10 +128,11 @@ jobs:
       - run: dotnet format Marketplace.slnx --verify-no-changes --no-restore
       - run: python tools/release/package_plugins.py
       - run: python tools/release/verify_archives.py out/releases
-      - name: Load the release archives in a clean host
+      - run: dotnet publish tools/ArchiveSmoke -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=false -o out/archive-smoke
+      - name: Load the release archives in a clean self-contained host
         env:
           LLM_LIVE_TEST_KEY: ''
-        run: dotnet run --project tools/ArchiveSmoke -c Release -- out/releases
+        run: out/archive-smoke/DMCBK.OfficialPlugins.Tests out/releases
       - uses: actions/upload-artifact@v6
         with:
           name: plugin-release-rehearsal

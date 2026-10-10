@@ -47,22 +47,30 @@ The process architecture controls selection. A Windows x86 process needs `win-x8
 
 ## Configure GitHub once
 
-Enable Actions for the repository. Enable **Allow GitHub Actions to create and approve pull requests** in the repository's Actions settings. Configure the `plugins` environment if release approval is required. Publication uses the built-in GitHub token with `contents: write` and `pull-requests: write`; it does not require NuGet publishing credentials.
+Enable Actions for the repository. Enable **Allow GitHub Actions to create and approve pull requests** in the repository's Actions settings. Configure the `plugins` environment if release approval is required. Automatic publication uses the built-in GitHub token with `contents: write`. Manual per-plugin publication also needs `pull-requests: write` for its catalogue PR. Plugin publication does not require NuGet credentials.
 
 The reusable validation workflow runs tests on seven native process targets and cross-builds four additional Linux targets. Runner labels follow [GitHub's hosted runner reference](https://docs.github.com/en/actions/reference/runners/github-hosted-runners). Local Linux execution does not establish results on those other targets.
 
-## Tag and publish
+## Publish after a merge
+
+Merge reviewed plugin changes into `master`. After **Plugin validation** succeeds for the master push, **Publish marketplace plugins** builds the archives, tests them in a self-contained host, creates annotated tags for new manifest versions and uploads the release assets. It verifies the public hashes before committing the catalogue update to `master`. Recorded versions, including yanked releases, are never reused.
+
+Increase each changed plugin version before merging. The publisher uses the exact validated commit and skips a stale run when a newer master revision already exists. To retry, run **Publish marketplace plugins** on the same master revision. Existing tags and assets must match their original source and bytes.
+
+The generated catalogue commit uses GitHub's built-in token. GitHub does not start another push workflow for that commit, which prevents a publication loop. The publication job has already checked the archives, public hashes and generated catalogue.
+
+## Tag and publish one plugin manually
 
 Merge the plugin changes into `master` before tagging. Replace the example ID and version below with the plugin's manifest values:
 
 ```sh
 git switch master
 git pull --ff-only
-git tag -a plugin/auto-eat/v2.0.1 -m "auto-eat 2.0.1"
-git push origin plugin/auto-eat/v2.0.1
+git tag -a plugin/auto-eat/v2.0.2 -m "auto-eat 2.0.2"
+git push origin plugin/auto-eat/v2.0.2
 ```
 
-The release workflow checks the tag annotation, manifest version and ancestry in `master`. It runs the full validation matrix, builds the declared archives and verifies their local checksums. The `plugins` environment then publishes the exact archive set to GitHub Releases. Existing assets on retry must match byte for byte.
+The manual release workflow checks the tag annotation, manifest version and ancestry in `master`. It runs the full validation matrix, builds the declared archives and verifies their local checksums. The `plugins` environment then publishes the exact archive set to GitHub Releases. Existing assets on retry must match byte for byte.
 
 The workflow downloads the new release assets through their public URLs and checks their hashes before appending catalogue metadata. It opens a PR against `master` containing only marketplace changes. Publication retains prior catalogue entries and regenerates the identity index.
 
@@ -76,4 +84,4 @@ Use **Release plugin** → **Run workflow** with the same annotated tag for a pa
 
 Set `yanked = true` to withdraw a bad release from ordinary new installs. Retain its catalogue record and archive for existing locks and rollback. A rollback restores plugin selections; it cannot undo game actions or external messages already sent by a plugin.
 
-The imported catalogue records refer to unavailable assets in the former repository. They remain yanked. The prepared patch versions publish new assets here and require DMCBK `0.1.0-preview.6` and UMPK `0.9.0-beta.6` or later within their declared ranges.
+The imported catalogue records refer to unavailable assets in the former repository. They remain yanked. The prepared patch versions publish new assets here and require DMCBK `0.1.0-preview.7` and UMPK `0.9.0-beta.6` or later within their declared ranges.

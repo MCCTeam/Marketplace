@@ -16,7 +16,7 @@ Use MCC 2.0 or later. Enter these commands in MCC:
 
 Replace `auto-fishing` with a plugin ID from the table below. Read its linked manual to configure it. Use `/plugins list` to check which plugins are active.
 
-This repository is preparing its first releases. Installation becomes available as each plugin is published and its catalogue update is merged.
+New releases become installable after CI publishes their archives and updates the catalogue. Current releases need an MCC build that uses DMCBK preview.7 or later.
 
 To check for updates later:
 
@@ -71,7 +71,7 @@ dotnet format Marketplace.slnx --verify-no-changes --no-restore
 python3 -m unittest discover -s tests/release -v
 ```
 
-For an existing clone, run `git submodule update --init --recursive`. Builds restore DMCBK `0.1.0-preview.6` and UMPK `0.9.0-beta.6` from NuGet.org. The UMPK and DMCBK submodules provide source references for development; they do not supply build dependencies. MCC-Skills supplies the shared agent skills through `.skills`, `.codex/skills`, `.agents/skills` and `.claude/skills`.
+For an existing clone, run `git submodule update --init --recursive`. Builds restore DMCBK `0.1.0-preview.7` and UMPK `0.9.0-beta.6` from NuGet.org. The UMPK and DMCBK submodules provide source references for development; they do not supply build dependencies. MCC-Skills supplies the shared agent skills through `.skills`, `.codex/skills`, `.agents/skills` and `.claude/skills`.
 
 | Folder | Contents |
 | --- | --- |
@@ -90,7 +90,7 @@ Pull requests and pushes to `master` run formatting, plugin tests, release tooli
 
 The current plugins use portable managed code, so each offers one `compiled`/`any` archive. Plugins that need a particular platform can declare separate targets in `release.toml`. MCC chooses the matching archive for its running process.
 
-An annotated `plugin/<id>/v<version>` tag starts the release workflow. After validation, it builds the declared archives, uploads immutable GitHub release assets, checks their public hashes and opens a catalogue PR. Merge that PR to make the release installable. See [release instructions](docs/releases.md) for setup, retries and platform declarations, and [marketplace formats](docs/marketplace-v2.md) for compatibility and dependencies.
+After a merge to `master` passes validation, CI publishes new plugin versions, verifies their public hashes and updates the catalogue. Users can then refresh the marketplace and install them. Annotated `plugin/<id>/v<version>` tags remain available for a manual per-plugin release. See [release instructions](docs/releases.md) for setup, retries and platform declarations, and [marketplace formats](docs/marketplace-v2.md) for compatibility and dependencies.
 
 Older catalogue entries copied from the former repository remain recorded but are yanked because their asset URLs are unavailable. New patch versions use this repository's release URLs and the tested library versions.
 

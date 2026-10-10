@@ -7,7 +7,7 @@ import sys
 import tomllib
 import zipfile
 
-PRIVATE_SDK_ASSEMBLIES = {'system.clientmodel', 'system.memory.data'}
+PRIVATE_SDK_ASSEMBLIES = {'system.clientmodel', 'system.memory.data', 'microsoft.extensions.ai', 'microsoft.extensions.ai.abstractions'}
 
 SHARED_ASSEMBLIES = {
     'dmcbk', 'dmcbk.core', 'dmcbk.commands', 'dmcbk.configuration', 'dmcbk.beacon',
@@ -52,7 +52,7 @@ def verify(root: Path) -> int:
                     raise ValueError(f'release.archive-link:{entry.filename}')
                 if entry.filename.lower().endswith('.dll'):
                     name = Path(entry.filename).stem.lower()
-                    if name in SHARED_ASSEMBLIES or name.startswith('umpk.') or (name.startswith('system.') and name not in PRIVATE_SDK_ASSEMBLIES) or (aspnetcore and name.startswith(('microsoft.aspnetcore.', 'microsoft.extensions.'))):
+                    if name in SHARED_ASSEMBLIES or name.startswith('umpk.') or (name.startswith('system.') and name not in PRIVATE_SDK_ASSEMBLIES) or (aspnetcore and name not in PRIVATE_SDK_ASSEMBLIES and (name == 'microsoft.aspnetcore' or name.startswith(('microsoft.aspnetcore.', 'microsoft.extensions.')))):
                         raise ValueError(f'release.host-assembly:{entry.filename}')
             names = archive.namelist()
             if 'LICENSE.md' not in names:

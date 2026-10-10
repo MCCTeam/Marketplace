@@ -24,3 +24,9 @@ The archive session uses protocol frames in memory. It does not prove gameplay o
 MCC `feat/mcc-2.0` also passed a clean Release build, all 915 CLI tests, localization, documentation checks, a documentation build, Linux distribution publishing and its help smoke test with DMCBK preview.6. The DMCBK release itself passed all three operating-system builds and test jobs before NuGet publication.
 
 Full local logs and archive digests are under `/tmp/marketplace-validation` and `/tmp/mcc-preview6-validation`. Rehearsal archives are not committed or published plugin releases.
+
+## Publication follow-up, 2026-10-10
+
+A second clean validation used published DMCBK `0.1.0-preview.7` and UMPK `0.9.0-beta.6` from NuGet.org with a fresh cache. The Release build had no warnings or errors. All 773 plugin tests and 19 release tooling tests passed. Formatting and workflow lint passed.
+
+All 25 bumped plugin archives passed checksum, manifest and dependency checks. A self-contained Linux x64 host loaded and activated every archive, then ran a scripted in-memory session. The MCP HTTP endpoint returned 401 without a token and completed initialization with its configured token. This check reproduces the distribution layout that previously exposed missing framework and private AI SDK dependencies. It does not claim real-server gameplay coverage.

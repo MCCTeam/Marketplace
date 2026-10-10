@@ -4,7 +4,7 @@ This repository maintains MCC plugins and the schema-2 official marketplace. Use
 
 Build `Marketplace.slnx` in Release mode. Run `dotnet test Marketplace.slnx -c Release --no-build` after building. Run `dotnet format Marketplace.slnx --verify-no-changes --no-restore`.
 
-Restore DMCBK `0.1.0-preview.6` and UMPK `0.9.0-beta.6` from NuGet.org. The `DMCBK` and `UMPK` submodules are reference checkouts. Do not add library project references or local package feeds.
+Restore DMCBK `0.1.0-preview.7` and UMPK `0.9.0-beta.6` from NuGet.org. The `DMCBK` and `UMPK` submodules are reference checkouts. Do not add library project references or local package feeds.
 
 Read the relevant skill through `.skills` before use. `.skills`, `.codex/skills`, `.agents/skills` and `.claude/skills` link to `MCC-Skills/skills`. Edit shared skills in their repository.
 

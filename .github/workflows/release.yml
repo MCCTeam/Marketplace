@@ -63,6 +63,9 @@ jobs:
             out/catalogue
           if-no-files-found: error
   publish:
+    concurrency:
+      group: marketplace-publication
+      cancel-in-progress: false
     needs: [check-tag, package]
     runs-on: ubuntu-24.04
     timeout-minutes: 20

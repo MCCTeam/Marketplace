@@ -1,0 +1,65 @@
+name: Publish marketplace plugins
+on:
+  workflow_run:
+    workflows: ['Plugin validation']
+    branches: [master]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: marketplace-publication
+  cancel-in-progress: false
+jobs:
+  validate-manual:
+    if: github.event_name == 'workflow_dispatch'
+    uses: ./.github/workflows/validate.yml
+  publish:
+    needs: validate-manual
+    if: >-
+      always() && (
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'master' &&
+       github.event.workflow_run.head_repository.full_name == github.repository) ||
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master' &&
+       needs.validate-manual.result == 'success'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: plugins
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.401
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - name: Restore published dependencies
+        run: dotnet restore Marketplace.slnx --configfile NuGet.Config
+      - run: python tools/release/package_plugins.py
+      - run: python tools/release/verify_archives.py out/releases
+      - run: dotnet publish tools/ArchiveSmoke -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=false -o out/archive-smoke
+      - name: Test the actual archives and authenticated MCP endpoint
+        env:
+          LLM_LIVE_TEST_KEY: ''
+        run: out/archive-smoke/DMCBK.OfficialPlugins.Tests out/releases
+      - name: Publish pending versions and verified catalogue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VALIDATED_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+        run: python tools/release/publish_pending.py --publish
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: published-plugin-assets
+          path: |
+            out/releases
+            out/catalogue
+          if-no-files-found: error

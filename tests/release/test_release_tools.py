@@ -23,6 +23,9 @@ package = load('package_plugins')
 verify = load('verify_archives')
 publish = load('publish_assets')
 tag = load('check_tag')
+import sys
+sys.path.insert(0, str(ROOT / 'tools/release'))
+pending = load('publish_pending')
 
 
 class ArchiveTests(unittest.TestCase):
@@ -31,8 +34,9 @@ class ArchiveTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.addCleanup(self.temporary.cleanup)
 
-    def archive(self, extras=None, release_range='>=0.1.0-preview.6 <0.2.0'):
-        manifest = '''schema-version = 2
+    def archive(self, extras=None, aspnetcore=False, release_range='>=0.1.0-preview.6 <0.2.0'):
+        capabilities = "[\"aspnetcore\"]" if aspnetcore else "[]"
+        manifest = f'''schema-version = 2
 id = "demo"
 version = "1.0.0"
 api-version = "1.0"
@@ -42,7 +46,7 @@ target = "any"
 entry = "Demo.dll"
 dmcbk = ">=0.1.0-preview.6 <0.2.0"
 umpk = ">=0.9.0-beta.6 <0.10.0"
-needs = []
+needs = {capabilities}
 deps = []
 '''
         path = self.root / 'demo-1.0.0-compiled-any.zip'
@@ -62,7 +66,7 @@ api-version = "1.0"
 framework = "net10.0"
 dmcbk = "{release_range}"
 umpk = ">=0.9.0-beta.6 <0.10.0"
-needs = []
+needs = {capabilities}
 [[releases.assets]]
 kind = "compiled"
 target = "any"
@@ -94,6 +98,15 @@ sha256 = "{digest}"
     def test_case_insensitive_duplicates_are_rejected(self):
         self.archive({'demo.dll': b'duplicate'})
         with self.assertRaisesRegex(ValueError, 'duplicate-path'):
+            verify.verify(self.root)
+
+    def test_aspnetcore_archive_keeps_private_ai_sdk(self):
+        self.archive({"Microsoft.Extensions.AI.Abstractions.dll": b"private SDK"}, aspnetcore=True)
+        self.assertEqual(1, verify.verify(self.root))
+
+    def test_aspnetcore_root_is_rejected(self):
+        self.archive({"Microsoft.AspNetCore.dll": b"framework"}, aspnetcore=True)
+        with self.assertRaisesRegex(ValueError, "host-assembly"):
             verify.verify(self.root)
 
     def test_host_assembly_is_rejected(self):
@@ -192,6 +205,28 @@ class TagTests(unittest.TestCase):
                 tag.main()
             git.assert_not_called()
 
+
+
+class PendingReleaseTests(unittest.TestCase):
+    def test_published_and_yanked_versions_are_not_reused(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "src/Demo").mkdir(parents=True)
+            (root / "marketplace/catalog").mkdir(parents=True)
+            manifest = root / "src/Demo/plugin.toml"
+            manifest.write_text('id = "demo"\nversion = "1.0.0"\n')
+            catalogue = root / "marketplace/catalog/demo.toml"
+            for yanked in ("true", "false"):
+                catalogue.write_text(f'[[releases]]\nversion = "1.0.0"\nyanked = {yanked}\n')
+                self.assertEqual([], pending.pending(root))
+            manifest.write_text('id = "demo"\nversion = "1.0.1"\n')
+            self.assertEqual([{"id": "demo", "version": "1.0.1", "tag": "plugin/demo/v1.0.1"}], pending.pending(root))
+
+    def test_existing_tag_cannot_move_to_another_source_revision(self):
+        item = {"id": "demo", "version": "1.0.0", "tag": "plugin/demo/v1.0.0"}
+        with patch.object(pending.subprocess, "run", return_value=subprocess.CompletedProcess([], 0)), patch.object(pending, "run", side_effect=["tag", "old-commit"]):
+            with self.assertRaisesRegex(ValueError, "tag-revision-mismatch"):
+                pending.ensure_tag(item, "new-commit")
 
 if __name__ == '__main__':
     unittest.main()

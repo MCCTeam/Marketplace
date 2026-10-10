@@ -2,7 +2,7 @@ schema-version = 2
 kind = "compiled"
 target = "any"
 framework = "net10.0"
-dmcbk = ">=0.1.0-preview.6 <0.2.0"
+dmcbk = ">=0.1.0-preview.7 <0.2.0"
 umpk = ">=0.9.0-beta.6 <0.10.0"
 needs = ["commands"]
 # ReplayCapture - records the session as a ReplayMod .mcpr file.
@@ -10,7 +10,7 @@ needs = ["commands"]
 # recording starts at the handshake and login frames rather than at the first play packet.
 # See /man writing-plugins for what each manifest field means.
 id = "replay-capture"
-version = "2.0.1"
+version = "2.0.2"
 entry = "DMCBK.OfficialPlugins.ReplayCapture.dll"
 api-version = "1.0"
 
