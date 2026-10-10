@@ -2,6 +2,25 @@ schema-version = 2
 id = "auto-attack"
 
 [[releases]]
+version = "2.0.2"
+api-version = "1.0"
+dmcbk = ">=0.1.0-preview.7 <0.2.0"
+umpk = ">=0.9.0-beta.6 <0.10.0"
+framework = "net10.0"
+needs = [ "commands", ]
+yanked = false
+requires = {  }
+optional = {  }
+hosts = {  }
+
+[[releases.assets]]
+kind = "compiled"
+target = "any"
+url = "https://github.com/MCCTeam/Marketplace/releases/download/plugin%2Fauto-attack%2Fv2.0.2/auto-attack-2.0.2-compiled-any.zip"
+sha256 = "86dc2ad5bce37c851d85040b136a7bc0f8fe423fc3ffdef7262801cbbefdd86c"
+
+
+[[releases]]
 version = "2.0.0"
 api-version = "1.0"
 dmcbk = ">=0.1.0-preview.1 <0.2.0"
@@ -18,3 +37,5 @@ kind = "compiled"
 target = "any"
 url = "https://github.com/MCCTeam/DMCBK-Plugins/releases/download/plugin%2Fauto-attack%2Fv2.0.0/auto-attack-2.0.0-compiled-any.zip"
 sha256 = "1fc2475d05b9237a70b2895445ae6245ba5426388c2d55f944e0b138f5dd66c0"
+
+

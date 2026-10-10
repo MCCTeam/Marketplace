@@ -2,6 +2,25 @@ schema-version = 2
 id = "auto-drop"
 
 [[releases]]
+version = "2.0.2"
+api-version = "1.0"
+dmcbk = ">=0.1.0-preview.7 <0.2.0"
+umpk = ">=0.9.0-beta.6 <0.10.0"
+framework = "net10.0"
+needs = [ "commands", ]
+yanked = false
+requires = {  }
+optional = {  }
+hosts = {  }
+
+[[releases.assets]]
+kind = "compiled"
+target = "any"
+url = "https://github.com/MCCTeam/Marketplace/releases/download/plugin%2Fauto-drop%2Fv2.0.2/auto-drop-2.0.2-compiled-any.zip"
+sha256 = "d78fcd9b21b6ddb806d465634ddc4ee9c2a12e36f4fb5867ae1be01d60d1275f"
+
+
+[[releases]]
 version = "2.0.0"
 api-version = "1.0"
 dmcbk = ">=0.1.0-preview.1 <0.2.0"
@@ -18,3 +37,5 @@ kind = "compiled"
 target = "any"
 url = "https://github.com/MCCTeam/DMCBK-Plugins/releases/download/plugin%2Fauto-drop%2Fv2.0.0/auto-drop-2.0.0-compiled-any.zip"
 sha256 = "4fed40a4e3066caff4558c9e54616eddf24911c3d8df9f1d06c8f07d88bfd765"
+
+

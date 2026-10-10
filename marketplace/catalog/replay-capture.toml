@@ -2,6 +2,25 @@ schema-version = 2
 id = "replay-capture"
 
 [[releases]]
+version = "2.0.2"
+api-version = "1.0"
+dmcbk = ">=0.1.0-preview.7 <0.2.0"
+umpk = ">=0.9.0-beta.6 <0.10.0"
+framework = "net10.0"
+needs = [ "commands", ]
+yanked = false
+requires = {  }
+optional = {  }
+hosts = {  }
+
+[[releases.assets]]
+kind = "compiled"
+target = "any"
+url = "https://github.com/MCCTeam/Marketplace/releases/download/plugin%2Freplay-capture%2Fv2.0.2/replay-capture-2.0.2-compiled-any.zip"
+sha256 = "24d04fa6a780208fd1d3048752559c15fdf979612654a679411de6e2f9728c88"
+
+
+[[releases]]
 version = "2.0.0"
 api-version = "1.0"
 dmcbk = ">=0.1.0-preview.1 <0.2.0"
@@ -18,3 +37,5 @@ kind = "compiled"
 target = "any"
 url = "https://github.com/MCCTeam/DMCBK-Plugins/releases/download/plugin%2Freplay-capture%2Fv2.0.0/replay-capture-2.0.0-compiled-any.zip"
 sha256 = "b99d49e28eabc66b698fe26b93d0942e3b839d15003ffc318aab076dd2f64daf"
+
+

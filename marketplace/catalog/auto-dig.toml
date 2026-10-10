@@ -2,6 +2,25 @@ schema-version = 2
 id = "auto-dig"
 
 [[releases]]
+version = "2.0.2"
+api-version = "1.0"
+dmcbk = ">=0.1.0-preview.7 <0.2.0"
+umpk = ">=0.9.0-beta.6 <0.10.0"
+framework = "net10.0"
+needs = [ "commands", ]
+yanked = false
+requires = {  }
+optional = {  }
+hosts = {  }
+
+[[releases.assets]]
+kind = "compiled"
+target = "any"
+url = "https://github.com/MCCTeam/Marketplace/releases/download/plugin%2Fauto-dig%2Fv2.0.2/auto-dig-2.0.2-compiled-any.zip"
+sha256 = "661db23294606ce830579750b32d73c19384c0f136e4548831325b21c9fb902f"
+
+
+[[releases]]
 version = "2.0.0"
 api-version = "1.0"
 dmcbk = ">=0.1.0-preview.1 <0.2.0"
@@ -18,3 +37,5 @@ kind = "compiled"
 target = "any"
 url = "https://github.com/MCCTeam/DMCBK-Plugins/releases/download/plugin%2Fauto-dig%2Fv2.0.0/auto-dig-2.0.0-compiled-any.zip"
 sha256 = "58672c3afe78233b6d320f1ed80c5906b01fc4cbfb7fc55fa4b7934a83da35ec"
+
+

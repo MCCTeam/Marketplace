@@ -151,3 +151,4 @@ id = "telegram-bridge"
 description = "Relays game chat to a Telegram chat and messages back into the game."
 tags = [ "chat", "telegram", "bridge", ]
 releases = "catalog/telegram-bridge.toml"
+
