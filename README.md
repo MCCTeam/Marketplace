@@ -4,14 +4,19 @@ Plugins for [Minecraft Console Client](https://github.com/MCCTeam/Minecraft-Cons
 
 ## Use the marketplace in MCC
 
-Use MCC 2.0 or later. Enter these commands in MCC:
+Current MCC 2.0 builds register this marketplace as `official` by default. Enter these commands in MCC:
 
 ```text
-/plugins marketplace add https://raw.githubusercontent.com/MCCTeam/Marketplace/master/marketplace/mcc-marketplace.toml as official
 /plugins search fishing in official
 /plugins install auto-fishing@official
 /plugins enable auto-fishing
 /plugins info auto-fishing
+```
+
+If `/plugins marketplace list` does not show `official`, add it first:
+
+```text
+/plugins marketplace add https://raw.githubusercontent.com/MCCTeam/Marketplace/master/marketplace/mcc-marketplace.toml as official
 ```
 
 Replace `auto-fishing` with a plugin ID from the table below. Read its linked manual to configure it. Use `/plugins list` to check which plugins are active.

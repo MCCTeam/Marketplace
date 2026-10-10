@@ -30,3 +30,13 @@ Full local logs and archive digests are under `/tmp/marketplace-validation` and 
 A second clean validation used published DMCBK `0.1.0-preview.7` and UMPK `0.9.0-beta.6` from NuGet.org with a fresh cache. The Release build had no warnings or errors. All 773 plugin tests and 19 release tooling tests passed. Formatting and workflow lint passed.
 
 All 25 bumped plugin archives passed checksum, manifest and dependency checks. A self-contained Linux x64 host loaded and activated every archive, then ran a scripted in-memory session. The MCP HTTP endpoint returned 401 without a token and completed initialization with its configured token. This check reproduces the distribution layout that previously exposed missing framework and private AI SDK dependencies. It does not claim real-server gameplay coverage.
+
+## Public releases and MCC default
+
+Master validation passed all seven native targets and four cross-builds. The automatic publication workflow then created 25 public releases and appended their verified catalogue records. Linux x64 independently downloaded every public archive and checked its SHA-256. The published catalogue passed MCC's schema validator.
+
+A clean self-contained MCC build restored only published NuGet packages. All 25 public plugins installed and activated. Installing `llm-test` brought in `llm-core` first. The test checked exact lock versions, URLs and digests, restart and pin persistence, disable/enable/reload/unpin, and uninstall preservation of settings and data. MCP rejected unauthenticated HTTP requests and completed authenticated initialization before and after restart.
+
+A separate real-server test ran all 25 plugins on vanilla Minecraft `1.21.11`, in offline mode on isolated loopback port `55731`. ChatLog recorded a server broadcast, stopped recording after disable, and recorded new broadcasts after enable and reload. MCP authentication also passed during that live connection. MCC exited with code 0 and the owned server stopped through its console. This proves those callbacks; it does not claim live gameplay coverage for every plugin. UMPK `0.9.0-beta.6` package metadata identifies source commit `a867a06e131d997e2fe2ef58801a8dd1f67af856`; DMCBK preview.7 identifies `dc9b23477ebbb7852b03d67273e82c259d25560d`.
+
+After those tests, MCC commit `2d40c7a1a82b85aa9b26c4d3e81d8d80b61cbc30` added the default publisher on `feat/mcc-2.0`. A second clean build passed all 918 CLI tests, owned-source formatting, localization, documentation checks and the documentation build. A fresh runtime installed AutoFishing from the public marketplace without an add command. Explicit removal survived restart, and an existing custom registry remained unchanged byte for byte. Automatic updates start off.
