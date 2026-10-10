@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><AssemblyName>DMCBK.OfficialPlugins.Tests</AssemblyName><IsTestProject>true</IsTestProject><IsPackable>false</IsPackable></PropertyGroup>
+<ItemGroup><ProjectReference Include="../../src/Alerts/Alerts.csproj"/>
+<ProjectReference Include="../../src/AntiAFK/AntiAFK.csproj"/>
+<ProjectReference Include="../../src/AutoAttack/AutoAttack.csproj"/>
+<ProjectReference Include="../../src/AutoCraft/AutoCraft.csproj"/>
+<ProjectReference Include="../../src/AutoDig/AutoDig.csproj"/>
+<ProjectReference Include="../../src/AutoDrop/AutoDrop.csproj"/>
+<ProjectReference Include="../../src/AutoEat/AutoEat.csproj"/>
+<ProjectReference Include="../../src/AutoFishing/AutoFishing.csproj"/>
+<ProjectReference Include="../../src/AutoRelog/AutoRelog.csproj"/>
+<ProjectReference Include="../../src/AutoRespond/AutoRespond.csproj"/>
+<ProjectReference Include="../../src/ChatLog/ChatLog.csproj"/>
+<ProjectReference Include="../../src/DiscordBridge/DiscordBridge.csproj"/>
+<ProjectReference Include="../../src/DiscordRpc/DiscordRpc.csproj"/>
+<ProjectReference Include="../../src/Farmer/Farmer.csproj"/>
+<ProjectReference Include="../../src/FollowPlayer/FollowPlayer.csproj"/>
+<ProjectReference Include="../../src/ItemsCollector/ItemsCollector.csproj"/>
+<ProjectReference Include="../../src/LlmCore/LlmCore.csproj"/>
+<ProjectReference Include="../../src/LlmTest/LlmTest.csproj"/>
+<ProjectReference Include="../../src/Map/Map.csproj"/>
+<ProjectReference Include="../../src/McpServer/McpServer.csproj"/>
+<ProjectReference Include="../../src/PlayerListLogger/PlayerListLogger.csproj"/>
+<ProjectReference Include="../../src/RemoteControl/RemoteControl.csproj"/>
+<ProjectReference Include="../../src/ReplayCapture/ReplayCapture.csproj"/>
+<ProjectReference Include="../../src/ScriptScheduler/ScriptScheduler.csproj"/>
+<ProjectReference Include="../../src/TelegramBridge/TelegramBridge.csproj"/></ItemGroup><ItemGroup><PackageReference Include="DMCBK.Core"/>
+<PackageReference Include="DMCBK.Commands"/>
+<PackageReference Include="DMCBK.Configuration"/>
+<PackageReference Include="DMCBK.Beacon"/>
+<PackageReference Include="DMCBK.PluginSdk"/>
+<PackageReference Include="DMCBK.Plugins"/>
+<PackageReference Include="DMCBK.Marketplace"/>
+<PackageReference Include="DMCBK.Testing"/><PackageReference Include="Microsoft.NET.Test.Sdk"/><PackageReference Include="xunit"/><PackageReference Include="xunit.runner.visualstudio" PrivateAssets="all"/></ItemGroup>
+<ItemGroup><FrameworkReference Include="Microsoft.AspNetCore.App"/></ItemGroup></Project>

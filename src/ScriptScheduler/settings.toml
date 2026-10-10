@@ -1,0 +1,37 @@
+# ScriptScheduler settings (regenerated with commented defaults on first run if deleted).
+Enabled = false # Set to false to disable ScriptScheduler without unloading it.
+
+# One [[TaskList]] block per scheduled task.
+[[TaskList]]
+Task_Name = "Task Name 1"
+Trigger_On_First_Login = false
+Trigger_On_Login = false
+Trigger_On_Dialog = false # Fire when the server shows a dialog (1.21.6+), in configuration or in play.
+Dialog_Match = "" # Only fire when the dialog title or one of its input keys contains this text; empty matches every dialog.
+Action = "send /hello"
+
+  [TaskList.Trigger_On_Times]
+  Enable = true # Fire at the times listed below.
+  Times = [ "14:00:00" ] # Times of day, as "HH:mm:ss" strings.
+
+  [TaskList.Trigger_On_Interval]
+  Enable = true # Fire repeatedly, with a random delay between MinTime and MaxTime.
+  MinTime = 3.6
+  MaxTime = 4.8
+
+[[TaskList]]
+Task_Name = "Task Name 2"
+Trigger_On_First_Login = false
+Trigger_On_Login = true
+Trigger_On_Dialog = false # Fire when the server shows a dialog (1.21.6+), in configuration or in play.
+Dialog_Match = "" # Only fire when the dialog title or one of its input keys contains this text; empty matches every dialog.
+Action = "send /login pass"
+
+  [TaskList.Trigger_On_Times]
+  Enable = false
+  Times = [ ]
+
+  [TaskList.Trigger_On_Interval]
+  Enable = false
+  MinTime = 1.0
+  MaxTime = 10.0

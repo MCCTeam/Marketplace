@@ -1,0 +1,151 @@
+# AutoCraft's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# The autocraft command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "Crafts items from registered chests at a bench it finds itself."
+command_usage = "autocraft <craft|keep|recipes|info|show|add|remove|chests|bench|queue|cancel|status|stop> ..."
+usage_craft = "queue items to craft once, like: craft 64 torches"
+usage_keep = "keep items stocked, like: keep 128 torches"
+usage_recipes = "list known recipes, optionally filtered"
+usage_info = "show a recipe as an ASCII grid"
+usage_show = "show a recipe as an ASCII grid"
+usage_add = "register a chest: add <input|output> <chest|barrel|shulker> <\"sign\"|x y z> [item]"
+usage_remove = "forget a chest again"
+usage_chests = "list the registered chests"
+usage_bench = "bench radius <n>, auto, set <x y z>, rescan, status"
+usage_queue = "list the queued jobs"
+usage_cancel = "cancel one queued job by number"
+usage_status = "say what the bot is doing right now"
+usage_stop = "stop everything and clear the queue"
+usage_list = "list the known recipes"
+
+inventory_required = "AutoCraft needs inventory handling; it will stay idle."
+not_connected = "Not connected to a server."
+settings_disabled = "AutoCraft is disabled in settings.toml. Set Enabled to true first."
+bad_order = "Say what to craft, like: autocraft craft 64 torches"
+recipe_not_found = "No recipe called \"{0}\"."
+
+# {0} is a comma-separated suggestion list.
+recipe_suggest = " Did you mean: {0}?"
+
+# {0} is the recipe, {1} the count.
+crafting = "AutoCraft: crafting {0}."
+keeping = "AutoCraft: keeping {0} stocked at {1}."
+queued = "Queued. Run autocraft queue to see it."
+queued_keep = "Queued as a keep job. Run autocraft queue to see it."
+
+# {0} is the result the recipe declares.
+start_fail = "AutoCraft: the recipe for {0} has no materials."
+
+# {0} is the job number, {1} how many jobs are queued.
+queue_cancel_bad = "There is no job {0}. The queue holds {1}."
+queue_empty = "The queue is empty."
+
+# {0} is the job number, {1} the recipe, {2} the target, {3} how many are made.
+queue_line = "{0}. {1} x{2} ({3} made)"
+queue_line_keep = "{0}. keep {1} x{2} ({3} made)"
+
+# {0} is the cancelled job number.
+queue_cancelled = "Cancelled job {0}."
+already_stopped = "Nothing is running."
+stopping = "AutoCraft stopped."
+aborted = "AutoCraft aborted."
+
+# {0} is the finished recipe, {1} how many were made.
+job_done = "Finished {0} x{1}."
+
+# {0} is the material, {1} where it was looked for, {2} how many are still missing.
+waiting_for = "Waiting for {0}: checked {1}, still need {2}."
+no_input_chests = "pockets (no input chests registered)"
+
+# {0} is the finished item, {1} how many are stuck in pockets.
+output_full = "Output full: {0} took nothing, {1} still in pockets."
+
+# {0} is the recipe, {1} the stock count.
+stock_full = "Keeping {0}: stock is full at {1}."
+
+# {0} is the search radius, {1} the block the bot stands on.
+missing_bench = "Missing crafting bench: searched {0} blocks with no luck."
+
+chest_added = "Chest added."
+chest_removed = "Chest removed."
+chest_not_found = "No matching chest entry. Run autocraft chests to see them."
+chest_no_locator = "Give a sign name in quotes or coordinates, like \"Main\" or 12 64 -30."
+chest_bad_position = "Those coordinates do not parse. Use x y z, like 12 64 -30."
+chest_duplicate = "That chest is already registered."
+chests_empty = "No chests registered. Add one: autocraft add input chest \"Main\"."
+
+# {0} is input/output, {1} the container kind, {2} the quoted label or coordinates.
+chest_line_shared = "{0} {1} {2}"
+
+# {0} is input/output, {1} the container kind, {2} the quoted label or coordinates, {3} the item filter.
+chest_line_filtered = "{0} {1} {2} [{3}]"
+
+# {0} is the sign label.
+chest_where_label = "\"{0}\""
+
+# {0} is the saved radius.
+bench_radius_saved = "Bench search radius is now {0}."
+bench_auto = "Bench is automatic again."
+bench_rescanning = "Rescanning for a bench."
+
+# {0} is the pinned position.
+bench_pinned = "Bench pinned at {0}. Use bench auto to go back to scanning."
+
+# {0} is the bound position.
+bench_bound = "bound at {0}."
+bench_unbound = "not bound yet."
+
+# {0} is the radius, {1} the bound state.
+bench_status_auto = "Bench: automatic, radius {0}, {1}"
+
+# {0} is the pinned position, {1} the bound state.
+bench_status_pin = "Bench: pinned at {0}, {1}"
+
+status_idle = "Idle. The queue is empty."
+
+# {0} is the recipe, {1} made so far, {2} the target.
+status_crafting = "Crafting {0} ({1}/{2})."
+status_keeping = "Keeping {0} stocked ({1}/{2} made)."
+
+# {0} is the search radius.
+status_finding_bench = "Finding a crafting bench (radius {0})."
+
+# {0} is the radius, {1} where the bot stands.
+status_missing_bench = "Missing crafting bench: searched {0} blocks around {1}. Place a table nearby or pin one with bench set."
+
+# {0} is the material, {1} where it looked, {2} how many are missing.
+status_waiting = "Waiting for {0}: checked {1}, still need {2}. Add more or run autocraft stop."
+
+# {0} is the recipe, {1} how many are stuck in pockets.
+status_output_full = "Output chest full: {0} took nothing, {1} still in pockets. Clear space or add another output."
+
+# {0} is the recipe, {1} the stock count.
+status_stock_full = "Keeping {0}: stock is full at {1}."
+
+# {0} is how many recipes are known, {1} their names.
+recipes = "Recipes ({0}): {1}"
+
+# {0} is the filter, {1} how many matched, {2} their names.
+recipes_filtered = "Recipes matching \"{0}\" ({1}): {2}"
+
+# {0} is what was crafted.
+crafted = "AutoCraft: crafted {0}."
+
+# {0} is the recipe, {1} what the bench kept giving instead.
+bad_result = "Gave up on {0}: the bench kept giving {1}. Check the shape with autocraft info."
+
+step_failed = "AutoCraft: the crafting step failed."
+cleanup_failed = "AutoCraft: cleanup failed."
+navigation_failed = "AutoCraft: could not walk there."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>.
+[settings]
+enabled = "Set to false to disable AutoCraft without unloading it."
+bench_radius = "How far around the bot to look for a crafting table (2-32)."
+bench = "Pinned bench as \"x y z\". Empty means the bot finds one itself."
+on_failure = "abort = stop when a material runs out, wait = park until it comes back."
+chests = "Chests registered through the command. Each entry is input/output, the container kind, a sign label or coordinates, and an optional item filter."
+custom_recipes = "Custom server recipes, layered over the built-ins. A custom with the same name wins."
+crafting_table = "Legacy fixed table. Honored only when Bench is empty."
+recipes = "Legacy recipes. Still craftable; prefer built-ins and custom recipes."

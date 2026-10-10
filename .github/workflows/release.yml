@@ -1,0 +1,114 @@
+name: Release plugin
+on:
+  push:
+    tags: ['plugin/*/v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing annotated plugin/<id>/v<version> tag
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: plugin-release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  check-tag:
+    runs-on: ubuntu-24.04
+    outputs:
+      tag: ${{ steps.release.outputs.tag }}
+      id: ${{ steps.release.outputs.id }}
+      version: ${{ steps.release.outputs.version }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - id: release
+        env:
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: python tools/release/check_tag.py
+  validate:
+    needs: check-tag
+    uses: ./.github/workflows/validate.yml
+  package:
+    needs: [check-tag, validate]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ needs.check-tag.outputs.tag }}
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.401
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - env:
+          PLUGIN_ID: ${{ needs.check-tag.outputs.id }}
+        run: python tools/release/package_plugins.py --id "$PLUGIN_ID"
+      - run: python tools/release/verify_archives.py out/releases
+      - uses: actions/upload-artifact@v6
+        with:
+          name: immutable-plugin-release
+          path: |
+            out/releases
+            out/catalogue
+          if-no-files-found: error
+  publish:
+    needs: [check-tag, package]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment: plugins
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: master
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.401
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - uses: actions/download-artifact@v5
+        with:
+          name: immutable-plugin-release
+          path: out
+      - name: Publish immutable assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ needs.check-tag.outputs.tag }}
+          PLUGIN_ID: ${{ needs.check-tag.outputs.id }}
+          PLUGIN_VERSION: ${{ needs.check-tag.outputs.version }}
+        run: python tools/release/publish_assets.py
+      - run: dotnet build tools/PluginPack -c Release
+      - name: Verify public payloads
+        env:
+          PLUGIN_ID: ${{ needs.check-tag.outputs.id }}
+        run: dotnet tools/PluginPack/bin/Release/net10.0/PluginPack.dll verify-assets "out/catalogue/catalog/$PLUGIN_ID.toml"
+      - name: Append verified release to current catalogue
+        run: |
+          dotnet tools/PluginPack/bin/Release/net10.0/PluginPack.dll catalogue out/releases marketplace/catalog
+          dotnet tools/PluginPack/bin/Release/net10.0/PluginPack.dll index src marketplace/catalog marketplace/mcc-marketplace.toml
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          base: master
+          branch: marketplace/${{ needs.check-tag.outputs.id }}/${{ needs.check-tag.outputs.version }}
+          add-paths: marketplace
+          commit-message: 'chore: publish ${{ needs.check-tag.outputs.id }} ${{ needs.check-tag.outputs.version }}'
+          title: 'Publish ${{ needs.check-tag.outputs.id }} ${{ needs.check-tag.outputs.version }}'
+          body: 'Adds the released plugin to the marketplace. CI built and tested the plugin, uploaded its immutable archives and verified their public SHA-256 hashes.'
+      - uses: actions/upload-artifact@v6
+        with:
+          name: verified-catalogue-update
+          path: marketplace

@@ -1,0 +1,34 @@
+# AutoRespond's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+#
+# The rule dump these lines quote, and the sample matches.ini written on first run, both stay in the
+# source: they are literal key=value text, not sentences.
+
+# {0} is the rules file.
+loading = "AutoRespond: loading matches from '{0}'."
+file_created = "AutoRespond: no matches file, wrote a sample to '{0}'."
+file_error = "AutoRespond: could not read the matches file '{0}'."
+
+# {0} is how many rules were accepted.
+loaded = "AutoRespond: loaded {0} rule(s)."
+
+no_rules = "AutoRespond: the matches file defines no usable rule; the plugin stays idle."
+
+# {0} is the rejected rule, as its key=value dump.
+no_action = "AutoRespond: ignoring a rule with no action: {0}"
+no_trigger = "AutoRespond: ignoring a rule with no trigger: {0}"
+
+# {0} is the pattern that would not compile.
+bad_regex = "AutoRespond: ignoring an invalid regex '{0}'."
+
+# {0} is the command about to run.
+running = "AutoRespond: running '{0}'."
+
+# {0} is whatever the command answered.
+result = "AutoRespond: {0}"
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable AutoRespond without unloading it."
+matches_file = "Rules file, resolved inside this plugin's data/ folder. A sample is written on first run."
+match_colors = "Keep formatting codes in the text the rules match against."

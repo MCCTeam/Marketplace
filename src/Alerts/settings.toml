@@ -1,0 +1,36 @@
+# Alerts settings (regenerated with commented defaults on first run if deleted).
+Enabled = true # Set to false to disable Alerts without unloading it.
+UseRegex = false # Default for rules. Any rule with Regex = true uses .NET regular expressions.
+# Case-insensitive suppression substrings. Any match here cancels the alert.
+Excludes = [ "joined the game", "left the game" ]
+RouteMode = "fixed" # fixed sends every alert to all its routes. model lets the judge pick a subset.
+# Lines matching one of these skip the batch queue and judge at once.
+PriorityPatterns = [ "whispers:" ]
+LogToFile = false # Append matched lines to the log file in this plugin's data/ folder.
+LogFile = "alerts-log.txt" # Log file name, resolved inside data/.
+Discord_Target = "" # Where the Discord alert goes: route:name and dm:owner-id entries, comma-separated. Empty means every channel that takes game chat.
+
+# One chat rule per [[Rule]] table. Each rule pairs patterns with its own routes.
+[[Rule]]
+Name = "admin-watch" # Rule name, shown in listings and the log.
+Match = [ "alert", "admin", "whisper" ] # Trigger substrings, or regexes with Regex = true.
+Routes = [ "desktop", "discord" ] # Any of desktop, discord, telegram, file, beep. Empty means all.
+Beep = true # Beep through the host when this rule fires.
+Smart = false # Judge confirms against the prompt before alerting.
+Regex = false # Read this rule's Match list as .NET regular expressions.
+Prompt = "" # Per-rule prompt override. Empty means the global Smart.Prompt.
+PromptFile = "" # A file in data/ with the prompt. Wins over Prompt when set.
+
+[Smart]
+Mode = "off" # off fires rules directly. rules confirms Smart rules. full also judges the rest.
+Model = "local/qwen3-8b" # Judge model as provider/model-id.
+Confidence = 0.7 # Verdicts below this are dropped in full mode.
+Prompt = "" # What to watch for, in plain words. Empty means the built-in default.
+PromptFile = "" # A file in data/ with the prompt. Wins over Prompt when set.
+CatchAllRoutes = [ "desktop" ] # Where full-mode verdicts go.
+Batch = false # Judge low-priority lines in batches to save calls.
+BatchSize = 10 # Flush the batch at this many lines.
+BatchSeconds = 15 # Flush the batch after this many seconds.
+Context = [ "nick", "position", "server" ] # Facts sent with each judge call. Empty means chat only.
+Owner = "" # The bot owner's name, sent as context when set.
+HistoryLines = 5 # Trailing chat lines sent as context.

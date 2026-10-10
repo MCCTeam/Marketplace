@@ -1,0 +1,22 @@
+# McpServer's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+
+disabled = "McpServer: disabled in settings.toml, the endpoint is off."
+started = "McpServer: listening at {0}."
+start_failed = "McpServer: failed to start ({0})."
+stopped = "McpServer: stopped."
+stop_failed = "McpServer: failed to stop ({0})."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>.
+[settings]
+enabled = "Set to false to stop the endpoint without unloading the plugin."
+bind_host = "Interface to bind. Keep loopback unless a wider bind is truly needed."
+port = "TCP port to listen on."
+route = "HTTP route the MCP endpoint is served from."
+require_auth_token = "Require Authorization: Bearer on every MCP call. On by default; turning it off exposes player control to local software."
+auth_token_env_var = "Environment variable the bearer token is read from. The secret itself never lives in this file."
+allow_non_loopback = "Allow binding a non-loopback address. Refused unless auth is also on."
+cap_session_status = "Session/server/reference reads."
+cap_chat_and_commands = "Chat sends, server commands, internal commands, respawn, disconnect."
+cap_movement = "Movement, look, dig, place, use, entity interaction."
+cap_inventory = "Inventory snapshots, search, containers, transfers."
+cap_entity_world = "Entity, block, item and sign reads."

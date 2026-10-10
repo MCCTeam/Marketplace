@@ -1,0 +1,4 @@
+# PlayerListLogger settings (regenerated with commented defaults on first run if deleted).
+Enabled = false # Set to false to disable PlayerListLogger without unloading it.
+File = "playerlog.txt" # Log file inside this plugin's data/ folder.
+Delay = 60.0 # Seconds between two records. Clamped to at least 1.

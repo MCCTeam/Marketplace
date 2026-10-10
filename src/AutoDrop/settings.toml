@@ -1,0 +1,5 @@
+# AutoDrop settings (regenerated with commented defaults on first run if deleted).
+Enabled = false # Set to false to disable AutoDrop without unloading it.
+Mode = "include" # include = drop the listed items, exclude = keep only them, everything = drop it all.
+# Item names. The legacy enum spelling (Cobblestone), a bare id or a namespaced id all work.
+Items = [ "Cobblestone", "Dirt" ]

@@ -1,0 +1,19 @@
+# AutoAttack settings (regenerated with commented defaults on first run if deleted).
+Enabled = false # Set to false to disable AutoAttack without unloading it.
+Mode = "single" # single = hit one priority target per cooldown, multi = hit every target in range.
+Priority = "distance" # distance = closest first. health is accepted but falls back to distance on this core.
+Interaction = "Attack" # Attack = left click, Interact = right click.
+Attack_Range = 4.0 # Attack reach in blocks. Clamped to 1.0 - 4.0.
+Only_In_Front = true # Only attack entities you can see: ahead of you and not behind blocks. Set to false to attack in every direction, through walls.
+Front_FOV = 180.0 # Total view-cone width in degrees when Only_In_Front is true. 180 keeps the legacy hemisphere, smaller values ignore peripheral targets. Clamped to 1 - 180.
+Attack_Hostile = true # Attack hostile mobs.
+Attack_Passive = false # Attack passive mobs.
+List_Mode = "whitelist" # whitelist = only the listed types, blacklist = every allowed type except the listed ones.
+# Entity types. The legacy enum spelling (Zombie), a bare id or a namespaced id all work.
+Entites_List = [ "Zombie", "Cow" ]
+
+[Cooldown_Time]
+Custom = false # Use the values below instead of the vanilla attack-speed cooldown.
+RandomMode = false # Pick a random cooldown between Min and Max on every swing.
+Min = 1.5 # Minimum cooldown, seconds.
+Max = 2.5 # Maximum cooldown, seconds.

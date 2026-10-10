@@ -1,0 +1,9 @@
+[submodule "UMPK"]
+	path = UMPK
+	url = https://github.com/MCCTeam/UMPK.git
+[submodule "DMCBK"]
+	path = DMCBK
+	url = https://github.com/MCCTeam/DMCBK.git
+[submodule "MCC-Skills"]
+	path = MCC-Skills
+	url = https://github.com/MCCTeam/MCC-Skills.git

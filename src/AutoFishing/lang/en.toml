@@ -1,0 +1,81 @@
+# AutoFishing's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# The autofishing command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "Casts a fishing rod, detects the bite, reels in and recasts."
+command_usage = "autofishing <start|stop|status [clear]>"
+usage_start = "start fishing"
+usage_stop = "stop"
+usage_status = "what it has caught so far"
+usage_status_clear = "reset the tally"
+
+started = "AutoFishing started."
+stopped = "AutoFishing stopped."
+bobber_in_water = "AutoFishing: the bobber is in the water."
+despawned = "AutoFishing: the bobber despawned, recasting."
+no_rod = "AutoFishing: no usable fishing rod in hand."
+fishing_timeout = "AutoFishing: no bite in time, recasting."
+entities_required = "AutoFishing needs entity handling; it will stay idle."
+no_inventory_handling = "AutoFishing: inventory handling is off, so rod checks are skipped."
+terrain_required = "AutoFishing: terrain handling is off, so Enable_Move is ignored."
+sound_detection_unavailable = "AutoFishing: this server version does not name its sounds, so Enable_Sound_Detection is ignored; motion and velocity detection are used instead."
+
+status_empty = "AutoFishing has not caught anything yet."
+status_info = "AutoFishing catches:"
+status_clear = "AutoFishing catch counters cleared."
+
+# One line of the status tally. {0} is how many, {1} what.
+status_entry = "{0} x {1}"
+
+# {0} is the delay in seconds.
+start_at = "AutoFishing will start in {0:0.0} s."
+cast_timeout = "AutoFishing: no bobber appeared, retrying in {0:0.0} s."
+
+# {0} is the running catch count.
+caught = "AutoFishing: caught a fish ({0} so far)."
+
+# {0} {1} {2} are where the catch happened, {3} the running count.
+caught_at = "AutoFishing: caught a fish at {0:0.0} {1:0.0} {2:0.0} ({3} so far)."
+
+# {0} is how many, {1} what came out of the water.
+got = "AutoFishing: got {0} x {1}."
+
+# {0} is the slot the fresh rod came from, {1} its remaining durability.
+switched = "AutoFishing: switched to the rod in slot {0} ({1} left)."
+
+# {0} is the yaw, {1} the pitch.
+looking_at = "AutoFishing: looking at yaw {0:0.0} pitch {1:0.0}."
+
+# The bobber trace, printed only when Log_Fish_Bobber is on. {0} is the entity id, {1} {2} {3} the
+# position on spawn and the movement per tick on the delta line.
+bobber_spawned = "AutoFishing: bobber {0} spawned at {1:0.00} {2:0.00} {3:0.00}."
+bobber_despawned = "AutoFishing: bobber {0} despawned."
+bobber_delta = "AutoFishing: bobber dx={0:0.000000} dy={1:0.000000} dz={2:0.000000}."
+
+snapshot_failed = "AutoFishing: could not snapshot the inventory."
+cast_failed = "AutoFishing: the cast failed."
+catch_name_failed = "AutoFishing: could not name the catch."
+move_failed = "AutoFishing: the movement step failed."
+durability_failed = "AutoFishing: the durability check failed."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable AutoFishing without unloading it."
+antidespawn = "Recast when the bobber despawns instead of waiting forever."
+mainhand = "Cast with the main hand. false casts with the off hand."
+auto_start = "Start fishing automatically after joining or respawning."
+cast_delay = "Seconds to wait before every cast."
+fishing_delay = "Seconds to wait after joining or respawning before the first cast."
+fishing_timeout = "Seconds without a bite before recasting."
+durability_limit = "Minimum remaining rod durability, out of 64."
+auto_rod_switch = "Swap in a fresh rod from the inventory when the held one is worn out."
+stationary_threshold = "Horizontal bobber movement below this counts as stationary."
+hook_threshold = "Vertical bobber movement above this while stationary is a bite."
+enable_velocity_detection = "Also detect the bite from the bobber velocity."
+velocity_hook_threshold = "Bobber Y velocity at or below this is a bite. Always negative."
+enable_sound_detection = "Also detect the bite from the entity.fishing_bobber.splash sound."
+sound_distance = "How close the splash must be, in blocks, to count as our bite."
+detection_warmup = "Seconds after the bobber lands before bite detection arms."
+log_fish_bobber = "Trace every bobber spawn, move and despawn."
+enable_move = "Walk the Movements list between casts."
+movements = "Positions and facings to cycle through between casts (only used when Enable_Move is true)."

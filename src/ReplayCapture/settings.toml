@@ -1,0 +1,5 @@
+# ReplayCapture settings (regenerated with commented defaults on first run if deleted).
+# This build exposes a raw packet feed to plugins, so the recorder is live: it records from the handshake
+# and login onward, not just from the moment play begins. The settings below are the legacy ones.
+Enabled = false # Set to false to disable ReplayCapture without unloading it.
+Backup_Interval = 300.0 # Seconds between backup snapshots of the in-progress recording. -1 disables backups.

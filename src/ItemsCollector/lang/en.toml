@@ -1,0 +1,39 @@
+# ItemsCollector's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# The itemscollector command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "Walks onto nearby dropped items to pick them up."
+command_usage = "itemscollector <start|stop>"
+usage_start = "start collecting"
+usage_stop = "stop"
+
+started = "Items Collector started."
+stopped = "Items Collector stopped."
+stopping = "Items Collector is stopping."
+already_collecting = "Items Collector is already collecting."
+not_collecting = "Items Collector is not collecting."
+not_connected = "Not connected to a server."
+requirements_missing = "Items Collector needs entity handling and terrain."
+whitelist_unavailable = "Items Collector: the item carried by a dropped-item entity is not decoded by this core, so Items_Whitelist is ignored and every dropped item is collected."
+
+# {0} is who holds the movement lease, which is only ever another_plugin below.
+movement_lock_held = "Items Collector could not take the movement lease; '{0}' holds it."
+another_plugin = "another plugin"
+
+# {0} is how many drops are queued for this round.
+collecting = "Items Collector: walking to {0} dropped item(s)."
+
+loop_error = "Items Collector: the collection loop stopped on an error."
+
+# {0} is the position of the drop that could not be reached.
+walk_failed = "Items Collector: could not walk to {0}."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable ItemsCollector without unloading it."
+collect_all_item_types = "Collect every dropped item type. Leave true: the whitelist is inert on this core."
+items_whitelist = "Item whitelist. Not evaluated on this core because dropped-item contents are not decoded."
+delay_between_tasks = "Milliseconds between collection cycles. Clamped to at least 100."
+collection_radius = "How far to look for dropped items, in blocks."
+always_return_to_start = "Walk back to the starting position when nothing is in range."
+prioritize_clusters = "Order targets around the densest cluster instead of nearest first."

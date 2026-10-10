@@ -1,0 +1,28 @@
+# AutoAttack's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+entities_required = "AutoAttack needs entity handling; it will stay idle."
+health_priority_unavailable = "AutoAttack: per-entity health is not tracked by this core, so Priority = health falls back to distance."
+
+# {0} is the entity type, {1} its entity id.
+attacked = "AutoAttack: hit {0} (#{1})."
+
+hit_failed = "AutoAttack: the hit failed."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable AutoAttack without unloading it."
+mode = "single = hit one priority target per cooldown, multi = hit every target in range."
+priority = "distance = closest first. health is accepted but falls back to distance on this core."
+interaction = "Attack = left click, Interact = right click."
+attack_range = "Attack reach in blocks. Clamped to 1.0 - 4.0."
+only_in_front = "Only attack entities you can see: ahead of you and not behind blocks. Set to false to attack in every direction, through walls."
+front_fov = "Total view-cone width in degrees when Only_In_Front is true. 180 keeps the legacy hemisphere, smaller values ignore peripheral targets. Clamped to 1 - 180."
+attack_hostile = "Attack hostile mobs."
+attack_passive = "Attack passive mobs."
+list_mode = "whitelist = only the listed types, blacklist = every allowed type except the listed ones."
+entites_list = "Entity types. The legacy enum spelling (Zombie), a bare id or a namespaced id all work."
+cooldown_custom = "Use the values below instead of the vanilla attack-speed cooldown."
+cooldown_random_mode = "Pick a random cooldown between Min and Max on every swing."
+cooldown_min = "Minimum cooldown, seconds."
+cooldown_max = "Maximum cooldown, seconds."

@@ -1,0 +1,18 @@
+schema-version = 2
+kind = "compiled"
+target = "any"
+framework = "net10.0"
+dmcbk = ">=0.1.0-preview.6 <0.2.0"
+umpk = ">=0.9.0-beta.6 <0.10.0"
+needs = ["commands"]
+id = "player-list-logger"
+version = "2.0.1"
+entry = "DMCBK.OfficialPlugins.PlayerListLogger.dll"
+api-version = "1.0"
+
+man = ["player-list-logger"]
+
+[meta]
+description = "Records who is online, and when they join or leave."
+tags = ["logging", "players", "files"]
+uses = ["files"]

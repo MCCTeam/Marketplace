@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>DMCBK.OfficialPlugins.TelegramBridge</AssemblyName>
+    <RootNamespace>DMCBK.OfficialPlugins.TelegramBridge</RootNamespace>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Version>2.0.1</Version>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="TelegramBridge.cs" />
+    <Compile Include="BridgeFormatting.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DMCBK.PluginSdk" ExcludeAssets="runtime" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Telegram.Bot" />
+  </ItemGroup>
+</Project>

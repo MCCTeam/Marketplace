@@ -1,0 +1,4 @@
+# AutoRespond settings (regenerated with commented defaults on first run if deleted).
+Enabled = false # Set to false to disable AutoRespond without unloading it.
+Matches_File = "matches.ini" # Rules file, resolved inside this plugin's data/ folder. A sample is written on first run.
+Match_Colors = false # Keep formatting codes in the text the rules match against.

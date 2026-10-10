@@ -1,0 +1,138 @@
+name: Build and test plugins
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  runtime:
+    name: Tests (${{ matrix.target }})
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            target: linux-x64
+          - os: ubuntu-24.04-arm
+            target: linux-arm64
+          - os: windows-2025
+            target: win-x64
+          - os: windows-11-arm
+            target: win-arm64
+          - os: macos-15-intel
+            target: osx-x64
+          - os: macos-15
+            target: osx-arm64
+    runs-on: ${{ matrix.os }}
+    env:
+      LLM_LIVE_TEST_KEY: ''
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.401
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - run: dotnet restore Marketplace.slnx --configfile NuGet.Config
+      - run: dotnet build Marketplace.slnx -c Release --no-restore
+      - name: Run plugin tests and check totals
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p out/test-results
+          dotnet test Marketplace.slnx -c Release --no-build --logger "trx;LogFileName=plugins.trx" --results-directory out/test-results 2>&1 | tee out/test-results/test-output.log
+          python tools/testcounts/check_test_counts.py out/test-results/test-output.log --baseline tools/testcounts/expected_counts.json
+      - run: python -m unittest discover -s tests/release -v
+      - run: dotnet tools/PluginPack/bin/Release/net10.0/PluginPack.dll validate src
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: tests-${{ matrix.target }}
+          path: out/test-results
+  cross-build:
+    name: Cross-build (${{ matrix.target }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [linux-arm, linux-musl-x64, linux-musl-arm64, linux-musl-arm]
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.401
+      - run: dotnet build tests/OfficialPlugins.Tests/OfficialPlugins.Tests.csproj -c Release --runtime ${{ matrix.target }} -p:SelfContained=false
+  windows-x86:
+    name: Tests (win-x86)
+    runs-on: windows-2025
+    timeout-minutes: 25
+    env:
+      LLM_LIVE_TEST_KEY: ''
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.401
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - name: Install x86 shared runtimes
+        shell: pwsh
+        run: |
+          Invoke-WebRequest https://dot.net/v1/dotnet-install.ps1 -OutFile $env:RUNNER_TEMP/dotnet-install.ps1
+          & $env:RUNNER_TEMP/dotnet-install.ps1 -Channel 10.0 -Runtime dotnet -Architecture x86 -InstallDir "$env:RUNNER_TEMP/dotnet-x86"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $env:RUNNER_TEMP/dotnet-install.ps1 -Channel 10.0 -Runtime aspnetcore -Architecture x86 -InstallDir "$env:RUNNER_TEMP/dotnet-x86"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          "DOTNET_ROOT_X86=$env:RUNNER_TEMP/dotnet-x86" >> $env:GITHUB_ENV
+      - name: Run in a 32-bit process and check totals
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force out/test-results | Out-Null
+          dotnet test tests/OfficialPlugins.Tests -c Release --arch x86 --logger "trx;LogFileName=plugins.trx" --results-directory out/test-results 2>&1 | Tee-Object out/test-results/test-output.log
+          $testExit = $LASTEXITCODE
+          if ($testExit -ne 0) { exit $testExit }
+          python tools/testcounts/check_test_counts.py out/test-results/test-output.log --baseline tools/testcounts/expected_counts.json
+          exit $LASTEXITCODE
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: tests-win-x86
+          path: out/test-results
+  packages:
+    name: Format and package rehearsal
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.401
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - run: dotnet restore Marketplace.slnx --configfile NuGet.Config
+      - run: dotnet format Marketplace.slnx --verify-no-changes --no-restore
+      - run: python tools/release/package_plugins.py
+      - run: python tools/release/verify_archives.py out/releases
+      - name: Load the release archives in a clean host
+        env:
+          LLM_LIVE_TEST_KEY: ''
+        run: dotnet run --project tools/ArchiveSmoke -c Release -- out/releases
+      - uses: actions/upload-artifact@v6
+        with:
+          name: plugin-release-rehearsal
+          path: |
+            out/releases
+            out/catalogue
+          if-no-files-found: error

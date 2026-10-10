@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally><TargetFramework>net10.0</TargetFramework><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><AssemblyName>ExamplePlugin</AssemblyName><IsPackable>false</IsPackable></PropertyGroup>
+  <ItemGroup><PackageReference Include="DMCBK.PluginSdk" Version="0.1.0-preview.6" ExcludeAssets="runtime" /></ItemGroup>
+</Project>

@@ -1,0 +1,20 @@
+schema-version = 2
+id = "player-list-logger"
+
+[[releases]]
+version = "2.0.0"
+api-version = "1.0"
+dmcbk = ">=0.1.0-preview.1 <0.2.0"
+umpk = ">=0.9.0-beta.3 <0.10.0"
+framework = "net10.0"
+needs = [ "commands", ]
+yanked = true
+requires = {  }
+optional = {  }
+hosts = {  }
+
+[[releases.assets]]
+kind = "compiled"
+target = "any"
+url = "https://github.com/MCCTeam/DMCBK-Plugins/releases/download/plugin%2Fplayer-list-logger%2Fv2.0.0/player-list-logger-2.0.0-compiled-any.zip"
+sha256 = "453ea4611d2968ce546036a5d573df20276d1cead53223478c34f7834cfec5f0"

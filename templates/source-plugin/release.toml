@@ -1,0 +1,6 @@
+schema-version = 2
+
+[[assets]]
+kind = "source"
+target = "any"
+entry = "ExamplePlugin.cs"

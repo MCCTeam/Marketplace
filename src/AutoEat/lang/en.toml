@@ -1,0 +1,10 @@
+# AutoEat's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# {0} is the item id of what is being eaten.
+eating = "AutoEat: eating {0}."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable AutoEat without unloading it."
+threshold = "Eat when food (0-20) is at or below this. Clamped to 0-20."

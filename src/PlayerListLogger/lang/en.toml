@@ -1,0 +1,18 @@
+# PlayerListLogger's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+saving = "PlayerListLogger: saving the player list."
+
+# {0} is how many players were written, {1} the file they went to.
+saved = "PlayerListLogger: saved {0} player(s) to '{1}'."
+
+# {0} is the configured file name.
+write_failed = "PlayerListLogger: could not append to '{0}'."
+
+read_failed = "PlayerListLogger: could not read the player list this round."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable PlayerListLogger without unloading it."
+file = "Log file inside this plugin's data/ folder."
+delay = "Seconds between two records. Clamped to at least 1."

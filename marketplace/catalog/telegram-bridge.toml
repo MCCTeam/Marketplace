@@ -1,0 +1,20 @@
+schema-version = 2
+id = "telegram-bridge"
+
+[[releases]]
+version = "2.0.0"
+api-version = "1.0"
+dmcbk = ">=0.1.0-preview.1 <0.2.0"
+umpk = ">=0.9.0-beta.3 <0.10.0"
+framework = "net10.0"
+needs = [ "commands", ]
+yanked = true
+requires = {  }
+optional = {  }
+hosts = {  }
+
+[[releases.assets]]
+kind = "compiled"
+target = "any"
+url = "https://github.com/MCCTeam/DMCBK-Plugins/releases/download/plugin%2Ftelegram-bridge%2Fv2.0.0/telegram-bridge-2.0.0-compiled-any.zip"
+sha256 = "60fd7efdca569c190c9c6e335507c99093ad385a91a5aaa9b567671801d8e170"

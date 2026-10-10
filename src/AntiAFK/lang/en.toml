@@ -1,0 +1,30 @@
+# AntiAFK's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# {0} and {1} are the ends of the delay range, in seconds.
+armed = "AntiAFK: armed, acting every {0}-{1} seconds."
+
+# {0} is the command or chat line that was sent.
+sent = "AntiAFK: sent {0}."
+
+# {0} and {1} are the X and Z the bot walked to.
+walked = "AntiAFK: walked to {0}, {1}."
+
+walk_attempt_failed = "AntiAFK: a walk attempt failed; trying another goal."
+action_failed = "AntiAFK: the anti-idle action failed."
+terrain_disabled = "AntiAFK: terrain handling is requested but the terrain feature is off; sending the command only."
+
+# {0} is how many columns were sampled, {1} how many of them were standable, {2} the feet Y.
+no_goal = "AntiAFK: no reachable goal in the surface sample ({0} columns, {1} standable, feet Y {2})."
+
+movement_held = "AntiAFK: another plugin holds the movement lease; sending the command only."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable AntiAFK without unloading it."
+delay = "Seconds between anti-idle actions. A fresh random value in [min, max] is drawn each time."
+command = "Command or chat line sent to stay non-idle. Leave empty to send nothing."
+use_sneak = "Toggle sneak on each action."
+use_terrain_handling = "Walk to a random nearby spot instead of only sending the command. Needs the terrain feature."
+walk_range = "Maximum X/Z offset of the random walk goal, in blocks. Must be positive."
+walk_retries = "How many walk goals to try before falling back to sending the command."

@@ -1,0 +1,11 @@
+schema-version = 2
+
+[[assets]]
+kind = "compiled"
+target = "any"
+entry = "ExamplePlugin.dll"
+
+[[assets]]
+kind = "source"
+target = "any"
+entry = "ExamplePlugin.cs"

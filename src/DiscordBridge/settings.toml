@@ -1,0 +1,33 @@
+# DiscordBridge settings (regenerated with commented defaults on first run if deleted).
+# Create an application and a bot at https://discord.com/developers/applications, invite it to your guild,
+# flip on the Message Content intent in the portal, then fill in Token and add a route below.
+# With Token empty the plugin self-disables and logs why. Never commit a real token: use env:NAME.
+Enabled = true # Set to false to disable DiscordBridge without unloading it.
+Token = "" # Discord bot token, or env:NAME to read it from the environment. Required; the plugin self-disables without it. Never commit a real token.
+GuildId = 0 # Legacy guild id, used only when no routes are configured.
+ChannelId = 0 # Legacy channel id, used only when no routes are configured.
+# Discord user ids allowed to relay into the game and run commands. Empty authorizes nobody.
+OwnersIds = []
+AllowDirectMessages = false # Accept DMs from owners as if they came from a channel.
+DmRelayOut = false # Relay game chat out to owner DMs, the same text the channels get.
+DeathEmbed = true # Post a red embed with death coordinates when the client dies.
+DmOwnersOn = [] # Game events that DM the owners instead of channels: whisper, teleport.
+CommandPrefix = "." # Default command prefix for channels and DMs. One or two characters.
+# Bridged channels. Empty falls back to the legacy guild and channel ids above.
+# [[Routes]]
+# Name = "general" # Local name used by the channel commands.
+# GuildId = 0 # Guild (server) id the channel belongs to.
+# ChannelId = 0 # Channel id the game chat is relayed to and from.
+# RelayOut = true # Relay game chat out to this channel.
+# RelayIn = true # Relay this channel's chat into the game.
+# AllowCommands = false # Run MCC commands sent from this channel.
+# OwnersIds = [] # Who may relay and run commands here. Empty inherits the global owners.
+# CommandPrefix = "" # Command prefix for this channel. Empty inherits the default.
+Message_Send_Timeout = 3 # Seconds a Discord send may take before the bridge abandons it. Below 1 falls back to 3.
+Allow_Other_Bot_Messages = false # Relay messages posted by other bots into the game. Commands from bots are never run.
+Relay_All_Messages = false # Relay every line, including server/system output the classifier could not categorize.
+Message_Aggregation_Interval = 3.0 # Seconds to batch chat lines into one Discord message. 0 posts each line immediately.
+# Message templates. Placeholders: {username} {message} {timestamp}
+PrivateMessageFormat = "**[Private Message]** {username}: {message}"
+PublicMessageFormat = "{username}: {message}"
+TeleportRequestMessageFormat = "A new Teleport Request from **{username}**!"

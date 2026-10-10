@@ -1,0 +1,20 @@
+schema-version = 2
+kind = "compiled"
+target = "any"
+framework = "net10.0"
+dmcbk = ">=0.1.0-preview.6 <0.2.0"
+umpk = ">=0.9.0-beta.6 <0.10.0"
+needs = ["commands"]
+# llm-test - exercises llm-core through its public contract. Test only, never ship enabled.
+id = "llm-test"
+version = "0.2.1"
+entry = "DMCBK.OfficialPlugins.LlmTest.dll"
+api-version = "1.0"
+
+[requires]
+llm-core = "^0.2.0"
+
+[meta]
+description = "Drives the shared LLM service and writes results to data/ for tests."
+tags = ["ai", "test"]
+uses = ["network", "files"]

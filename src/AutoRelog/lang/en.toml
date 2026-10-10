@@ -1,0 +1,43 @@
+# AutoRelog's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+#
+# "Connection has been lost" is deliberately not a key here. The plugin synthesizes that phrase for a
+# transport close so the shipped Kick_Messages default still matches. It is data compared against a
+# user's setting, and translating it would stop the default trigger list working.
+
+# {0} is the retry budget.
+launch = "AutoRelog: ready with {0} retries."
+
+no_kick_message_filter = "AutoRelog: kick message filtering is off; any disconnect rejoins."
+joined = "AutoRelog: session joined."
+session_ended = "AutoRelog: session ended."
+ignore_user_logout = "AutoRelog: the disconnect was local; not rejoining."
+
+# {0} is the kick message the server sent.
+disconnect_message = "AutoRelog: disconnected with message: {0}"
+
+reconnect_ignored = "AutoRelog: the kick message matched no trigger; not rejoining."
+
+# {0} is the trigger substring that matched.
+reconnect_matched = "AutoRelog: kick message matched '{0}'; rejoining."
+reconnect_always = "AutoRelog: rejoining regardless of the kick message ({0})."
+
+# {0} is the delay in seconds, {1} how many retries are left (or "unlimited").
+wait_with_retries = "AutoRelog: waiting {0} second(s) before rejoining ({1} left)."
+
+# {0} is the retry budget that ran out.
+retries_exhausted = "AutoRelog: the retry budget of {0} is exhausted; giving up."
+
+retries_unlimited = "unlimited"
+retries_reset = "AutoRelog: the session stayed up; retry budget reset."
+
+# {0} is why the rejoin failed.
+reconnect_failed = "AutoRelog: the rejoin attempt failed: {0}"
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable AutoRelog without unloading it."
+delay = "Seconds to wait before rejoining. A fresh random value in [min, max] is drawn each time."
+retries = "Rejoin attempts before giving up. -1 means unlimited. The budget resets after a stable join."
+ignore_kick_message = "Rejoin on any unexpected disconnect, ignoring Kick_Messages."
+kick_messages = "Case-insensitive substrings of the kick message that trigger a rejoin."

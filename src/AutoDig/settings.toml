@@ -1,0 +1,26 @@
+# AutoDig settings (regenerated with commented defaults on first run if deleted).
+Enabled = false # Set to false to disable AutoDig without unloading it.
+Auto_Tool_Switch = false # Switch to the tool recommended for the block before digging (needs inventory handling).
+Apply_Efficiency_Enchantments = true # Kept for compatibility. The new dig action has no client-side mining timer, so this is inert.
+Apply_Haste_Effects = true # Kept for compatibility. The new dig action has no client-side mining timer, so this is inert.
+Durability_Limit = 2 # Never pick a tool with less remaining durability than this. 0 disables the check.
+Drop_Low_Durability_Tools = false # Drop the worn-out tool after switching away from it.
+Mode = "lookat" # lookat = dig the crosshair block, fixedpos = dig Locations, both = crosshair limited to Locations.
+Location_Order = "distance" # distance = nearest position first, index = config order.
+Auto_Start_Delay = 3.0 # Seconds to wait after joining or respawning before the first dig.
+Dig_Timeout = 60.0 # Seconds before a dig that never completes re-arms the state machine.
+Log_Block_Dig = true # Log every dig and every reason for not digging.
+List_Type = "whitelist" # whitelist = only the listed blocks, blacklist = everything except the listed blocks.
+# Block names. The legacy enum spelling (Cobblestone), a bare id or a namespaced id all work.
+Blocks = [ "Cobblestone", "Stone" ]
+
+# Fixed dig positions, used by the fixedpos and both modes.
+[[Locations]]
+x = 123.5
+y = 64.0
+z = 234.5
+
+[[Locations]]
+x = 124.5
+y = 63.0
+z = 235.5

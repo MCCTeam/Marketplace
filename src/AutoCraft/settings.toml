@@ -1,0 +1,9 @@
+# AutoCraft settings (regenerated with commented defaults on first run if deleted).
+Enabled = false # Set to false to disable AutoCraft without unloading it.
+BenchRadius = 8 # How far around the bot to look for a crafting table (2-32).
+Bench = "" # Pinned bench as "x y z". Empty means the bot finds one itself.
+OnFailure = "abort" # abort = stop when a material runs out, wait = park until it comes back.
+
+# Chests registered through the command. Each entry is input/output, the container kind, a sign label or coordinates, and an optional item filter.
+
+# Custom server recipes, layered over the built-ins. A custom with the same name wins.
