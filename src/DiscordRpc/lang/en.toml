@@ -1,0 +1,42 @@
+# DiscordRpc's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+#
+# Two neighbours are deliberately not here. The RPC library's pipe diagnostics are developer traces, and
+# PresenceFormatter's display names ("Overworld", "Survival", "Hidden") are values a user's own presence
+# template substitutes, so tests pin them.
+
+missing_app_id = "DiscordRpc is disabled: no ApplicationId is configured. Create an application at https://discord.com/developers/applications and put its id in settings.toml."
+disabled = "DiscordRpc is disabled in its settings."
+initialized = "DiscordRpc: rich presence initialized."
+
+# {0} is the Discord user the presence is published as.
+connected = "DiscordRpc: connected as {0}."
+
+# {0} is the pipe number that refused the connection.
+connection_failed = "DiscordRpc: could not connect on pipe {0}."
+
+# {0} is the failure the RPC library reported.
+init_error = "DiscordRpc: could not initialize rich presence: {0}"
+update_error = "DiscordRpc: could not update the presence: {0}"
+
+# The RPC library's own pipe diagnostics, at debug level. {0} is whatever the library said.
+library_diagnostic = "DiscordRpc: {0}"
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable DiscordRpc without unloading it."
+application_id = "Discord Application ID from https://discord.com/developers/applications. Required."
+presence_details = "First presence line. Placeholders: {server_host} {server_port} {username} {health} {max_health} {food} {dimension} {gamemode} {x} {y} {z} {player_count} {protocol}"
+presence_state = "Second presence line. Same placeholders as PresenceDetails."
+large_image_key = "Large image asset key uploaded to the Discord application. Empty disables the image."
+large_image_text = "Large image hover text. Placeholders are expanded."
+small_image_key = "Small image asset key. Empty disables the small image."
+small_image_text = "Small image hover text. Placeholders are expanded."
+show_server_address = "Publish the server address. When false, {server_host} shows Hidden and {server_port} shows ****."
+show_coordinates = "Publish the player coordinates. When false, {x} {y} {z} show ?."
+show_health = "Publish health and food. When false, {health} {max_health} {food} show ?."
+show_dimension = "Publish the dimension. When false, {dimension} shows Hidden."
+show_gamemode = "Publish the game mode. When false, {gamemode} shows Hidden."
+show_elapsed_time = "Show the elapsed session time on the presence."
+show_player_count = "Publish the online player count as a Discord party size."
+update_interval_seconds = "Seconds between presence refreshes. Below 1 falls back to 10."

@@ -1,0 +1,36 @@
+# ScriptScheduler's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+#
+# The {0} these lines quote is a key=value dump of the task, built in the source. It is meant to be read
+# by a machine, so it is not translated.
+
+# {0} is that key=value description of the task.
+loaded_task = "ScriptScheduler: loaded task {0}"
+no_trigger = "ScriptScheduler: ignoring a task with no trigger: {0}"
+no_action = "ScriptScheduler: ignoring a task with no action: {0}"
+
+# {0} is the unparseable time as it was written.
+bad_time = "ScriptScheduler: ignoring an unparseable time '{0}'."
+
+# {0} is the action about to run.
+running_login = "ScriptScheduler: running '{0}' on login."
+running_time = "ScriptScheduler: running '{0}' on time."
+running_interval = "ScriptScheduler: running '{0}' on interval."
+running_dialog = "ScriptScheduler: running '{0}' on dialog."
+
+dialog_snapshot_failed = "ScriptScheduler: could not read the shown dialog."
+
+# {0} is whatever the command answered.
+result = "ScriptScheduler: {0}"
+
+no_tasks = "ScriptScheduler: no usable task is configured; the plugin stays idle."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable ScriptScheduler without unloading it."
+task_list = "One [[TaskList]] block per scheduled task."
+trigger_on_times = "Fire at the times listed below."
+times = "Times of day, as \"HH:mm:ss\" strings."
+trigger_on_interval = "Fire repeatedly, with a random delay between MinTime and MaxTime."
+trigger_on_dialog = "Fire when the server shows a dialog (1.21.6+), in configuration or in play."
+dialog_match = "Only fire when the dialog title or one of its input keys contains this text; empty matches every dialog."

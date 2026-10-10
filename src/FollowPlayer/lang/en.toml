@@ -1,0 +1,41 @@
+# FollowPlayer's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# The follow command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "Follow a player around using pathfinding."
+command_usage = "follow <start <player> [-f]|stop>"
+usage_start = "follow a player"
+usage_stop = "stop following"
+
+# {0} is the player. following is the command's answer, started the log line.
+following = "Now following {0}."
+started = "FollowPlayer: now following {0}."
+already_following = "Already following {0}."
+
+note = "Note: movement is limited by what the pathfinder can reach."
+unsafe_not_supported = "The -f flag is accepted for compatibility: it uses the direct physics move instead of the planner. The legacy unsafe-path option has no equivalent in the new movement API."
+
+stopping = "No longer following."
+already_stopped = "Not following anyone."
+invalid_name = "That is not a valid player name."
+player_not_found = "That player is not in range."
+movement_held = "Another plugin owns movement right now."
+movement_lost = "FollowPlayer: another owner took movement; stopping."
+not_connected = "Not connected to a server."
+disabled = "FollowPlayer is disabled in its settings."
+
+# {0} is the followed player.
+player_came_into_range = "FollowPlayer: {0} came into range; resuming."
+player_left_range = "FollowPlayer: {0} left the range; pausing."
+player_left_server = "FollowPlayer: {0} left the server; stopping."
+
+# {0} {1} {2} are where the step is going, {3} whether the planner is doing it.
+stepping = "FollowPlayer: stepping toward {0}, {1}, {2} (pathfinding={3})."
+stepped = "FollowPlayer: arrived near {0}, {1}, {2}."
+step_failed = "FollowPlayer: a movement step failed."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable FollowPlayer without unloading it."
+update_limit = "Minimum seconds between two re-paths toward the followed player."
+stop_at_distance = "Stop moving once the followed player is closer than this many blocks."

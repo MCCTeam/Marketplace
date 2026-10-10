@@ -1,0 +1,22 @@
+schema-version = 2
+kind = "compiled"
+target = "any"
+framework = "net10.0"
+dmcbk = ">=0.1.0-preview.6 <0.2.0"
+umpk = ">=0.9.0-beta.6 <0.10.0"
+needs = ["commands"]
+# llm-core - shared LLM providers, models, skills, and MCP servers for other plugins.
+id = "llm-core"
+version = "0.2.1"
+entry = "DMCBK.OfficialPlugins.LlmCore.dll"
+api-version = "1.0"
+
+man = ["llm-core"]
+
+[exports]
+assemblies = ["entry"]
+
+[meta]
+description = "Shared provider access for plugins. Ships the llm management command, nothing else."
+tags = ["ai", "llm"]
+uses = ["network"]

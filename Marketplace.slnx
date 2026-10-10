@@ -1,0 +1,30 @@
+<Solution>
+  <Project Path="src/Alerts/Alerts.csproj"/>
+  <Project Path="src/AntiAFK/AntiAFK.csproj"/>
+  <Project Path="src/AutoAttack/AutoAttack.csproj"/>
+  <Project Path="src/AutoCraft/AutoCraft.csproj"/>
+  <Project Path="src/AutoDig/AutoDig.csproj"/>
+  <Project Path="src/AutoDrop/AutoDrop.csproj"/>
+  <Project Path="src/AutoEat/AutoEat.csproj"/>
+  <Project Path="src/AutoFishing/AutoFishing.csproj"/>
+  <Project Path="src/AutoRelog/AutoRelog.csproj"/>
+  <Project Path="src/AutoRespond/AutoRespond.csproj"/>
+  <Project Path="src/ChatLog/ChatLog.csproj"/>
+  <Project Path="src/DiscordBridge/DiscordBridge.csproj"/>
+  <Project Path="src/DiscordRpc/DiscordRpc.csproj"/>
+  <Project Path="src/Farmer/Farmer.csproj"/>
+  <Project Path="src/FollowPlayer/FollowPlayer.csproj"/>
+  <Project Path="src/ItemsCollector/ItemsCollector.csproj"/>
+  <Project Path="src/LlmCore/LlmCore.csproj"/>
+  <Project Path="src/LlmTest/LlmTest.csproj"/>
+  <Project Path="src/Map/Map.csproj"/>
+  <Project Path="src/McpServer/McpServer.csproj"/>
+  <Project Path="src/PlayerListLogger/PlayerListLogger.csproj"/>
+  <Project Path="src/RemoteControl/RemoteControl.csproj"/>
+  <Project Path="src/ReplayCapture/ReplayCapture.csproj"/>
+  <Project Path="src/ScriptScheduler/ScriptScheduler.csproj"/>
+  <Project Path="src/TelegramBridge/TelegramBridge.csproj"/>
+  <Project Path="tools/PluginPack/PluginPack.csproj" />
+<Project Path="tests/OfficialPlugins.Tests/OfficialPlugins.Tests.csproj"/>
+  <Project Path="tools/ArchiveSmoke/ArchiveSmoke.csproj" />
+</Solution>

@@ -1,0 +1,30 @@
+# ReplayCapture's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# The replay command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "Save or stop the ReplayMod recording of this session."
+command_usage = "replay <save|stop>"
+usage_save = "write the recording out"
+usage_stop = "stop recording"
+
+# {0} is the server being recorded.
+started = "ReplayCapture: recording {0}."
+
+# {0} is the replay file. created is the log line, created_at the command's answer.
+created = "ReplayCapture: replay file created at {0}."
+created_at = "Replay file created at {0}."
+
+stopped = "Recording stopped and the replay file was saved."
+restart = "No recording is running; reconnect to start one."
+save_failed = "ReplayCapture: the replay file could not be written."
+disabled = "ReplayCapture is disabled in its settings."
+no_session = "No session is attached, so there is nothing to record."
+
+# Two forms of the same fact: the short one answers a command, the long one is logged at activation.
+no_raw_packet_feed_short = "ReplayCapture cannot record: this host exposes no raw packet feed to plugins."
+no_raw_packet_feed = "ReplayCapture is disabled: recording a ReplayMod file needs a raw clientbound frame stream (packet id plus payload bytes), and this host exposes none. The .mcpr writer is shipped and tested; it records as soon as the host offers a frame stream."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable ReplayCapture without unloading it."
+backup_interval = "Seconds between backup snapshots of the in-progress recording. -1 disables backups."

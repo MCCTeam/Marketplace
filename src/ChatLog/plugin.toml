@@ -1,0 +1,18 @@
+schema-version = 2
+kind = "compiled"
+target = "any"
+framework = "net10.0"
+dmcbk = ">=0.1.0-preview.6 <0.2.0"
+umpk = ">=0.9.0-beta.6 <0.10.0"
+needs = ["commands"]
+id = "chat-log"
+version = "2.0.1"
+entry = "DMCBK.OfficialPlugins.ChatLog.dll"
+api-version = "1.0"
+
+man = ["chat-log"]
+
+[meta]
+description = "Writes chat to a file, with a timestamp and a choice of formats."
+tags = ["chat", "logging", "files"]
+uses = ["chat", "files"]

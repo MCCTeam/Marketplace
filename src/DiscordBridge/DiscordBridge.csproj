@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>DMCBK.OfficialPlugins.DiscordBridge</AssemblyName>
+    <RootNamespace>DMCBK.OfficialPlugins.DiscordBridge</RootNamespace>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Version>2.0.1</Version>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DiscordBridge.cs" />
+    <Compile Include="DiscordBridgeSettings.cs" />
+    <Compile Include="DiscordVitals.cs" />
+    <Compile Include="BridgeRoutes.cs" />
+    <Compile Include="DiscordBridgeCommands.cs" />
+    <Compile Include="DiscordFormatting.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DMCBK.PluginSdk" ExcludeAssets="runtime" />
+    <PackageReference Include="DMCBK.Core" ExcludeAssets="runtime" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DSharpPlus" />
+    <PackageReference Include="Newtonsoft.Json" />
+  </ItemGroup>
+</Project>

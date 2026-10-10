@@ -1,0 +1,50 @@
+image_unavailable = "This host cannot display images. Enable file export to save the map."
+# Map's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# The maps command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "List and render the in-game maps the server has sent."
+command_usage = "maps <list|render <id>>"
+usage_list = "every map received"
+usage_render = "draw one"
+
+no_maps = "No map has been received yet."
+received = "Received maps:"
+
+# One line of the list. {0} is the map id, {1} when it last changed.
+list_item = "  Map {0}, last updated {1}"
+
+# {0} is the map id.
+received_map = "Map: received map data for map {0}."
+not_found = "No map with id {0} has been received."
+failed_to_render = "Map: failed to render map {0}."
+sent_to_discord = "Map: handed the render of map {0} to the Discord bridge."
+sent_to_telegram = "Map: handed the render of map {0} to the Telegram bridge."
+
+# {0} is the map id, {1} the file it was written to.
+rendered = "Map: rendered map {0} to {1}."
+
+# {0} is the map id, {1} the edge length it was resized to.
+resized = "Map: resized the render of map {0} to {1} pixels."
+
+# {0}x{1} is the map, {2}x{3} what fits in the console.
+scale = "Map is {0}x{1}; shown scaled down to {2}x{3}."
+
+# The caption sent with the image. {0} is the map id; the markup is each service's own.
+discord_caption = "> A render of the map with an id: **{0}**"
+telegram_caption = "A render of the map with an id: *{0}*"
+
+cleanup_failed = "Map: could not clear the rendered-maps folder."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable Map without unloading it."
+render_in_console = "Print the map to the console as coloured half-blocks."
+save_to_file = "Write the map to a .bmp in this plugin's data/Rendered_Maps folder."
+auto_render_on_update = "Render on every map update instead of only on 'maps render <id>'."
+delete_all_on_unload = "Clear previously rendered map files when the plugin starts (and on unload)."
+notify_on_first_update = "Log a line the first time each map id is received."
+rasize_rendered_image = "Resize the saved image to Resize_To x Resize_To pixels (legacy spelling kept)."
+resize_to = "Edge length in pixels for the resize. Must be positive; falls back to 128."
+send_rendered = "Hand the rendered image to the bridge plugins (they must be loaded and connected)."
+discord_target = "Where the Discord render goes: route:name and dm:owner-id entries, comma-separated. Empty means every channel that takes game chat."

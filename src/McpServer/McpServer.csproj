@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>DMCBK.OfficialPlugins.McpServer</AssemblyName>
+    <RootNamespace>DMCBK.OfficialPlugins.McpServer</RootNamespace>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Version>2.0.1</Version>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="McpServerSettings.cs" />
+    <Compile Include="McpResult.cs" />
+    <Compile Include="McpAuth.cs" />
+    <Compile Include="ObservedStateStore.cs" />
+    <Compile Include="McpCapabilities.cs" />
+    <Compile Include="McpCapabilities.Session.cs" />
+    <Compile Include="McpCapabilities.Entities.cs" />
+    <Compile Include="McpCapabilities.Chat.cs" />
+    <Compile Include="McpCapabilities.Movement.cs" />
+    <Compile Include="McpCapabilities.Inventory.cs" />
+    <Compile Include="McpToolSet.cs" />
+    <Compile Include="McpPromptSet.cs" />
+    <Compile Include="McpGuidance.cs" />
+    <Compile Include="EmbeddedMcpHost.cs" />
+    <Compile Include="McpServerPlugin.cs" />
+    <Compile Include="McpStatusCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="OperatorPrompt.md" LogicalName="MccMcpOperatorPrompt.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DMCBK.PluginSdk" ExcludeAssets="runtime" />
+    <PackageReference Include="DMCBK.Core" ExcludeAssets="runtime" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ModelContextProtocol" />
+    <PackageReference Include="ModelContextProtocol.AspNetCore" />
+  </ItemGroup>
+</Project>

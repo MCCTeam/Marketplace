@@ -1,0 +1,3 @@
+# Farmer settings (regenerated with commented defaults on first run if deleted).
+Enabled = false # Set to false to disable Farmer without unloading it.
+Delay_Between_Tasks = 1.0 # Seconds to wait between farming cycles. Clamped to at least 1.0.

@@ -1,0 +1,25 @@
+# AutoFishing settings (regenerated with commented defaults on first run if deleted).
+Enabled = false # Set to false to disable AutoFishing without unloading it.
+Antidespawn = false # Recast when the bobber despawns instead of waiting forever.
+Mainhand = true # Cast with the main hand. false casts with the off hand.
+Auto_Start = true # Start fishing automatically after joining or respawning.
+Cast_Delay = 0.4 # Seconds to wait before every cast.
+Fishing_Delay = 3.0 # Seconds to wait after joining or respawning before the first cast.
+Fishing_Timeout = 300.0 # Seconds without a bite before recasting.
+Durability_Limit = 2.0 # Minimum remaining rod durability, out of 64.
+Auto_Rod_Switch = true # Swap in a fresh rod from the inventory when the held one is worn out.
+Stationary_Threshold = 0.001 # Horizontal bobber movement below this counts as stationary.
+Hook_Threshold = 0.2 # Vertical bobber movement above this while stationary is a bite.
+Enable_Velocity_Detection = true # Also detect the bite from the bobber velocity.
+Velocity_Hook_Threshold = -0.2 # Bobber Y velocity at or below this is a bite. Always negative.
+Enable_Sound_Detection = true # Kept for compatibility. This core does not expose sound identity, so it is inert.
+Sound_Distance = 5.0 # Kept for compatibility, paired with Enable_Sound_Detection.
+Detection_Warmup = 1.0 # Seconds after the bobber lands before bite detection arms.
+Log_Fish_Bobber = false # Trace every bobber spawn, move and despawn.
+Enable_Move = false # Walk the Movements list between casts.
+
+# Positions and facings to cycle through between casts (only used when Enable_Move is true).
+[[Movements]]
+[Movements.facing]
+yaw = 12.34
+pitch = -23.45

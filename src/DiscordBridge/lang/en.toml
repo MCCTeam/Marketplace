@@ -1,0 +1,197 @@
+# DiscordBridge's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+#
+# The message templates are not here. They are settings values with their own {username} {message}
+# {timestamp} grammar, so they live in settings.toml.
+
+# The dscbridge command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "Drive the Discord bridge: status, channels, DMs."
+command_usage = "dscbridge <status|channels|channel|dm> ..."
+usage_status = "gateway, session, DMs, and per-route health"
+usage_channels = "list the bridged channels and their jobs"
+usage_channel = "add, remove, or tune one channel"
+usage_dm = "flip DMs or send one to an owner"
+
+missing_token = "DiscordBridge is disabled: no bot token is configured. Put a token or an env:NAME link in settings.toml."
+missing_owners = "DiscordBridge: OwnersIds is empty, so no Discord user may relay into the game or run commands."
+disabled_short = "DiscordBridge is disabled; check its token in settings.toml."
+
+connected = "DiscordBridge: connected."
+canceled_sending = "DiscordBridge: a message could not be sent."
+guild_lookup_failed = "DiscordBridge: the guild lookup failed."
+channel_lookup_failed = "DiscordBridge: the channel lookup failed."
+
+# {0} is the failure the Discord library reported.
+unknown_error = "DiscordBridge: could not start the bridge: {0}"
+
+# {0} is the route name, {1} the configured id.
+guild_not_found = "DiscordBridge route {0}: guild {1} was not found; the route stays offline."
+channel_not_found = "DiscordBridge route {0}: channel {1} was not found; the route stays offline."
+
+# What the bridge posts into the Discord channels.
+connected_notice = "Minecraft Console Client connected."
+disconnected_notice = "Minecraft Console Client disconnected."
+
+# {0} is what the command answered, quoted as a Discord code block.
+command_executed = "Command executed:\n```{0}```"
+
+# The teleport-request buttons and the answer that replaces them.
+accept = "Accept"
+deny = "Deny"
+accepted = "Accepted"
+denied = "Denied"
+
+# Told to someone tapping a teleport button who may not.
+button_denied = "Only an owner can do that."
+button_expired = "That request expired."
+
+# {0} is the linked variable name.
+token_env_missing = "DiscordBridge is disabled: token links to env:{0}, which is not set."
+
+# {0} is the route name.
+route_added = "Route {0} added and saved."
+route_exists = "Route {0} already exists."
+route_missing = "No route called {0}."
+route_removed = "Route {0} removed and saved."
+
+# {0} is the route, {1} the flag, {2} on/off.
+flag_updated = "Route {0}: {1} {2}."
+flag_out = "chat out"
+flag_in = "chat in"
+flag_cmd = "commands"
+flag_on = "on"
+flag_off = "off"
+bad_flag = "Use out, in or cmd."
+bad_value = "Use on or off."
+bad_name = "Give the route a name."
+bad_prefix = "Prefix must be one or two characters."
+
+# {0} is whatever did not parse as an id.
+bad_id = "Not a Discord id: {0}."
+
+# {0} is the route name.
+owners_set = "Route {0} owners set and saved."
+owners_inherited = "Route {0} inherits the global owners now."
+prefix_set = "Route {0} prefix is {1} now."
+prefix_defaulted = "Route {0} uses the default prefix now."
+
+# The direction subcommand is gone; this says where it went.
+direction_retired = "dscbridge direction is retired. Use dscbridge channel set."
+
+# DMs and probes.
+dm_on = "DMs on."
+dm_off = "DMs off."
+dm_messages_on = "Game chat now also goes to owner DMs."
+dm_messages_off = "Owner DMs no longer get game chat."
+dm_sent = "DM sent."
+dm_empty = "Write something to send."
+dm_word = "DM"
+
+# {0} is the failure.
+dm_failed = "DM failed: {0}."
+
+# {0} is the owner id.
+dm_no_shared_server = "No shared server with {0}; ask them to message the bot first."
+
+# The bridge has no gateway connection.
+bridge_offline = "Bridge is offline."
+
+# {0} is the route name.
+test_sent = "Probe sent to {0}."
+test_failed = "Probe failed: {0}."
+test_probe = "MCC probe from route {0}."
+
+# {0} is the destination nobody could resolve.
+image_bad_target = "DiscordBridge: no route or owner matches {0}; the message is dropped."
+
+# {0} is how many lines were dropped.
+dropped_lines = "Dropped {0} buffered lines while Discord was down."
+
+# {0} is the route, {1} the failure.
+send_failed = "Route {0}: send failed: {1}."
+
+# Only owners may run commands here, and this channel does not take them.
+commands_off_here = "This channel does not run commands."
+
+# {0} is the topic.
+man_unknown = "No manual page for {0}."
+
+# {0} is the search term.
+man_none = "Nothing matches {0}."
+
+# The pretty health card.
+vitals_title = "❤️ Health"
+vitals_hp = "HP"
+vitals_food = "Food"
+vitals_sat = "sat"
+vitals_level = "Level"
+vitals_xp = "xp"
+
+# The effects card.
+effects_title = "✨ Active effects"
+effects_none = "No active effects."
+
+# {0} is the effect name with level, {1} the duration.
+effect_gained = "Gained **{0}** ({1})"
+
+# {0} is the effect name.
+effect_wore_off = "**{0}** wore off"
+
+# Logged when the effect tracker cannot refresh.
+effects_sync_failed = "DiscordBridge: could not sync effects."
+
+# The death embed.
+death_title = "💀 Died"
+
+# Logged when the death coordinates cannot be read.
+death_read_failed = "DiscordBridge: could not read the death position."
+
+# Logged when the vitals or effects cannot be read for a Discord reply.
+vitals_read_failed = "DiscordBridge: could not read vitals for a Discord reply."
+effects_read_failed = "DiscordBridge: could not read effects for a Discord reply."
+
+# Status and channel lines.
+status_gateway_on = "gateway connected as {0}"
+status_gateway_off = "gateway offline"
+status_session_up = "session up"
+status_session_down = "session idle"
+status_dms = "dms {0}, messages {1}"
+status_route = "#{0} {1} last send {2}"
+mode_out = "out"
+mode_in = "in"
+mode_cmd = "cmd"
+mode_none = "nothing"
+last_ok = "ok"
+last_failed = "failed: {0}"
+last_never = "never"
+channels_empty = "No routes yet. Add one: dscbridge channel add <name> <guild> <channel>."
+channels_row = "#{0} {1}/{2} {3} prefix {4} {5}"
+owners_n = "{0} owners"
+owners_inherited_word = "inherited"
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable DiscordBridge without unloading it."
+token = "Discord bot token, or env:NAME to read it from the environment. Required; the plugin self-disables without it. Never commit a real token."
+guild_id = "Legacy guild id, used only when no routes are configured."
+channel_id = "Legacy channel id, used only when no routes are configured."
+owners_ids = "Discord user ids allowed to relay into the game and run commands. Empty authorizes nobody."
+allow_direct_messages = "Accept DMs from owners as if they came from a channel."
+dm_relay_out = "Relay game chat out to owner DMs, the same text the channels get."
+death_embed = "Post a red embed with death coordinates when the client dies."
+dm_owners_on = "Game events that DM the owners instead of channels: whisper, teleport."
+command_prefix = "Default command prefix for channels and DMs. One or two characters."
+routes = "Bridged channels. Empty falls back to the legacy guild and channel ids above."
+route_name = "Local name used by the channel commands."
+route_guild = "Guild (server) id the channel belongs to."
+route_channel = "Channel id the game chat is relayed to and from."
+route_out = "Relay game chat out to this channel."
+route_in = "Relay this channel's chat into the game."
+route_cmd = "Run MCC commands sent from this channel."
+route_owners = "Who may relay and run commands here. Empty inherits the global owners."
+route_prefix = "Command prefix for this channel. Empty inherits the default."
+message_send_timeout = "Seconds a Discord send may take before the bridge abandons it. Below 1 falls back to 3."
+allow_other_bot_messages = "Relay messages posted by other bots into the game. Commands from bots are never run."
+relay_all_messages = "Relay every line, including server/system output the classifier could not categorize."
+message_aggregation_interval = "Seconds to batch chat lines into one Discord message. 0 posts each line immediately."
+formats = "Message templates. Placeholders: {username} {message} {timestamp}"

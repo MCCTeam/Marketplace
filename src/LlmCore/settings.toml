@@ -1,0 +1,26 @@
+# llm-core settings (regenerated with commented defaults on first run if deleted).
+# Shared LLM access for plugins. Start with: llm setup <provider> <url> <keyenv|-> <provider/model>.
+# Keys live in environment variables, never here: ApiKeyEnv names the variable.
+Enabled = true # Set to false to keep the plugin loaded but idle.
+DefaultModel = "" # Default model as provider/model-id. Empty means callers must name one.
+DefaultMaxTokens = 0 # Cap per answer. Zero means the provider default.
+DefaultMaxContext = 32000 # Context token cap for auto compaction. Zero means 32000.
+DailyTokenBudget = 0 # Global daily token budget. Zero means unlimited.
+AllowLocalEndpoints = false # Allow http localhost endpoints, for Ollama and test stubs.
+# Per-plugin daily token budgets. Empty means the global budget only.
+# [[PluginBudgets]]
+# Plugin = "auto-respond" # Plugin id the budget applies to.
+# TokensPerDay = 50000 # Tokens per day for that plugin.
+# Shared providers. Keys come from the named environment variables.
+# [[Providers]]
+# Name = "local" # Local name used as provider/model-id.
+# Endpoint = "http://localhost:11434/v1" # Base URL.
+# Api = "responses" # responses or chat. Chat is the legacy path.
+# Enabled = true # Disabled providers are skipped, never probed.
+# ApiKeyEnv = "" # Environment variable holding the key. Empty allows keyless local servers.
+# Shared MCP servers, connected lazily.
+# [[McpServers]]
+# Name = "wiki" # Local name. Remote tools surface as name_tool.
+# Transport = "http" # http or sse.
+# Url = "http://localhost:3000/mcp" # Server URL.
+# Tools = ["search"] # Remote tool names to expose.

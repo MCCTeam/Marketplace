@@ -1,0 +1,40 @@
+# AutoDrop's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# The autodrop command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "Drops configured item types out of the inventory automatically."
+command_usage = "autodrop <on|off|add|remove|list|mode>"
+usage_on = "start dropping"
+usage_off = "stop"
+usage_add = "add an item to the list"
+usage_remove = "take one off it"
+usage_list = "show the list"
+usage_mode = "treat the list as a allow or deny list"
+
+on = "AutoDrop is now ON."
+off = "AutoDrop is now OFF."
+no_item = "The item list is empty."
+not_in_list = "That item is not in the list."
+inventory_required = "AutoDrop needs inventory handling; it will stay idle."
+
+# {0} is the item name.
+added = "Added '{0}' to the AutoDrop list."
+removed = "Removed '{0}' from the AutoDrop list."
+
+# {0} is the mode name.
+switched = "AutoDrop mode is now '{0}'."
+unknown_mode = "Unknown mode '{0}'; use include, exclude or everything."
+
+# {0} is how many items are listed, {1} the list itself.
+list = "AutoDrop list ({0}): {1}"
+
+# {0} is how many stacks were thrown, {1} the window they came from.
+dropped = "AutoDrop: dropped {0} stack(s) from window {1}."
+
+click_failed = "AutoDrop: a drop click failed."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable AutoDrop without unloading it."
+mode = "include = drop the listed items, exclude = keep only them, everything = drop it all."
+items = "Item names. The legacy enum spelling (Cobblestone), a bare id or a namespaced id all work."

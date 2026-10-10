@@ -1,0 +1,20 @@
+schema-version = 2
+id = "llm-core"
+
+[[releases]]
+version = "0.2.0"
+api-version = "1.0"
+dmcbk = ">=0.1.0-preview.1 <0.2.0"
+umpk = ">=0.9.0-beta.3 <0.10.0"
+framework = "net10.0"
+needs = [ "commands", ]
+yanked = true
+requires = {  }
+optional = {  }
+hosts = {  }
+
+[[releases.assets]]
+kind = "compiled"
+target = "any"
+url = "https://github.com/MCCTeam/DMCBK-Plugins/releases/download/plugin%2Fllm-core%2Fv0.2.0/llm-core-0.2.0-compiled-any.zip"
+sha256 = "6d34fd977b27c3110bb58f59f85dd2ade5647ef681af11bcd30e6a3f1ff86035"

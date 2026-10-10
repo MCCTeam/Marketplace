@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>DMCBK.OfficialPlugins.LlmCore</AssemblyName>
+    <RootNamespace>DMCBK.OfficialPlugins.LlmCore</RootNamespace>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Version>0.2.1</Version>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Api/LLMParts.cs" />
+    <Compile Include="Api/LLMProtocol.cs" />
+    <Compile Include="Api/LLMTools.cs" />
+    <Compile Include="Api/LLMAttributes.cs" />
+    <Compile Include="Api/LLMSkills.cs" />
+    <Compile Include="Api/LLMProviders.cs" />
+    <Compile Include="Api/LLMMcp.cs" />
+    <Compile Include="Api/LLMOptions.cs" />
+    <Compile Include="Api/LLMErrors.cs" />
+    <Compile Include="Api/LLMEvents.cs" />
+    <Compile Include="Api/LLMJson.cs" />
+    <Compile Include="Api/LLMTokenEstimator.cs" />
+    <Compile Include="LlmCorePlugin.cs" />
+    <Compile Include="LlmCoreSettings.cs" />
+    <Compile Include="LlmCommands.cs" />
+    <Compile Include="LlmService.cs" />
+    <Compile Include="LlmBackends.cs" />
+    <Compile Include="ProviderRegistry.cs" />
+    <Compile Include="ModelCatalog.cs" />
+    <Compile Include="ToolRegistry.cs" />
+    <Compile Include="SkillRegistry.cs" />
+    <Compile Include="SkillBuiltins.cs" />
+    <Compile Include="SkillScanner.cs" />
+    <Compile Include="McpRegistry.cs" />
+    <Compile Include="LlmBudgetLedger.cs" />
+    <Compile Include="LlmRedactor.cs" />
+    <Compile Include="EnvLinks.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DMCBK.PluginSdk" ExcludeAssets="runtime" />
+    <PackageReference Include="DMCBK.Commands" ExcludeAssets="runtime" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenAI" />
+  </ItemGroup>
+</Project>

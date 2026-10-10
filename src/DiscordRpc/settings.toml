@@ -1,0 +1,20 @@
+# DiscordRpc settings (regenerated with commented defaults on first run if deleted).
+# Create an application at https://discord.com/developers/applications, upload the image assets you want to
+# use, and put the application id below. With ApplicationId empty the plugin self-disables and logs why.
+Enabled = true # Set to false to disable DiscordRpc without unloading it.
+ApplicationId = "1485448268023337052" # Discord Application ID from https://discord.com/developers/applications. Required.
+# First presence line. Placeholders: {server_host} {server_port} {username} {health} {max_health} {food} {dimension} {gamemode} {x} {y} {z} {player_count} {protocol}
+PresenceDetails = "Playing on {server_host}:{server_port}"
+PresenceState = "{dimension} - HP: {health}/{max_health}" # Second presence line. Same placeholders as PresenceDetails.
+LargeImageKey = "mcc_icon" # Large image asset key uploaded to the Discord application. Empty disables the image.
+LargeImageText = "Minecraft Console Client" # Large image hover text. Placeholders are expanded.
+SmallImageKey = "" # Small image asset key. Empty disables the small image.
+SmallImageText = "" # Small image hover text. Placeholders are expanded.
+ShowServerAddress = true # Publish the server address. When false, {server_host} shows Hidden and {server_port} shows ****.
+ShowCoordinates = true # Publish the player coordinates. When false, {x} {y} {z} show ?.
+ShowHealth = true # Publish health and food. When false, {health} {max_health} {food} show ?.
+ShowDimension = true # Publish the dimension. When false, {dimension} shows Hidden.
+ShowGamemode = true # Publish the game mode. When false, {gamemode} shows Hidden.
+ShowElapsedTime = true # Show the elapsed session time on the presence.
+ShowPlayerCount = true # Publish the online player count as a Discord party size.
+UpdateIntervalSeconds = 10 # Seconds between presence refreshes. Below 1 falls back to 10.

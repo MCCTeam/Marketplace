@@ -1,0 +1,51 @@
+# AutoDig's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# The autodig command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "Digs blocks at the crosshair or at configured positions."
+command_usage = "autodig <start|stop>"
+usage_start = "start digging"
+usage_stop = "stop digging"
+
+started = "AutoDig started."
+stopped = "AutoDig stopped."
+terrain_required = "AutoDig needs terrain handling; it will stay idle."
+no_inventory_handling = "AutoDig: inventory handling is off, so Auto_Tool_Switch cannot work."
+too_far = "AutoDig: no block within reach."
+no_block = "AutoDig: no block to dig."
+not_allowed = "AutoDig: the block is not on the allowed list."
+dig_timeout = "AutoDig: the dig timed out, restarting."
+dig_fail = "AutoDig: the dig request failed."
+cycle_failed = "AutoDig: the dig cycle failed."
+dig_threw = "AutoDig: DigBlockAsync threw."
+
+# {0} is the delay in seconds.
+start_delay = "AutoDig will start in {0:0.0} s."
+
+# {0} {1} {2} are the block coordinates, {3} the block.
+digging = "AutoDig: digging {3} at {0} {1} {2}."
+
+# {0} is the tool, {1} the slot it came from.
+switched = "AutoDig: switched to {0} from slot {1}."
+dropped_worn = "AutoDig: dropped the worn {0} from slot {1}."
+
+# {0} is the player position, {1} how many positions are configured, {2} the best candidate and {3}
+# its distance.
+fixed_scan = "AutoDig fixed scan: self {0} candidates {1} best {2} distance {3}."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable AutoDig without unloading it."
+auto_tool_switch = "Switch to the tool recommended for the block before digging (needs inventory handling)."
+apply_efficiency_enchantments = "Kept for compatibility. The new dig action has no client-side mining timer, so this is inert."
+apply_haste_effects = "Kept for compatibility. The new dig action has no client-side mining timer, so this is inert."
+durability_limit = "Never pick a tool with less remaining durability than this. 0 disables the check."
+drop_low_durability_tools = "Drop the worn-out tool after switching away from it."
+mode = "lookat = dig the crosshair block, fixedpos = dig Locations, both = crosshair limited to Locations."
+locations = "Fixed dig positions, used by the fixedpos and both modes."
+location_order = "distance = nearest position first, index = config order."
+auto_start_delay = "Seconds to wait after joining or respawning before the first dig."
+dig_timeout = "Seconds before a dig that never completes re-arms the state machine."
+log_block_dig = "Log every dig and every reason for not digging."
+list_type = "whitelist = only the listed blocks, blacklist = everything except the listed blocks."
+blocks = "Block names. The legacy enum spelling (Cobblestone), a bare id or a namespaced id all work."

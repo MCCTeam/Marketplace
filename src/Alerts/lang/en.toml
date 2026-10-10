@@ -1,0 +1,101 @@
+# Alerts' own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+# The alert line itself. {0} is the raw chat line that matched.
+alert = "[Alert] {0}"
+
+# Said when the optional log file cannot be appended to.
+log_failed = "Alerts: could not append to the log file."
+
+# Said when the log file name is not usable. {0} is the name.
+invalid_file = "Alerts: log file name {0} is not usable."
+
+# Said when a Matches or Excludes entry does not compile as a regular expression. {0} is the entry.
+bad_pattern = "Alerts: pattern {0} does not compile and is skipped."
+
+# Said when a host notification cannot be shown.
+notify_failed = "Alerts: the host refused the notification."
+
+# Said once when smart matching is on but llm-core is not loaded.
+core_missing = "Alerts: smart matching is on, but llm-core is not loaded. Rules fire directly."
+
+# Said when llm-core vanishes mid-session and a rule needed the judge.
+core_missing_now = "Alerts: llm-core is gone. The rule fired directly."
+
+# Said when the judge answers garbage. Kept short, details stay in the debug log.
+verdict_unparseable = "Alerts: the judge answered garbage. The rule fired directly."
+
+# Said when one judge call fails. {0} is the short reason.
+judge_failed = "Alerts: judge call failed: {0}."
+
+# Said when the batch queue overflows and the oldest line is dropped.
+batch_dropped = "Alerts: the batch queue is full. The oldest line was dropped."
+
+# Command output. {n} are values, never sentences.
+command_desc = "Lists alert rules and tunes smart matching."
+command_usage = "alerts <smart|batch|rules|events|routes|test>"
+cmd_smart_set = "Smart mode is now {0}."
+cmd_smart_status = "Mode: {0} (model {1})."
+cmd_core = "Core: {0}."
+cmd_loaded = "loaded"
+cmd_missing = "missing"
+cmd_calls = "Started: {0}, calls: {1}, chat seen: {2}, kept: {3}, dropped: {4}, errors: {5}."
+cmd_last_error = "Last error ({0}): {1}."
+cmd_batch_set = "Batching is now {0}."
+cmd_on = "on"
+cmd_off = "off"
+cmd_batch_status = "Batching: {0} (size {1}, {2}s). Queued: {3}, dropped: {4}."
+cmd_no_rules = "No chat rules. Add [[Rule]] tables to settings."
+cmd_rule_row = "{0}: [{1}] -> {2} {3} hits: {4}."
+cmd_smart_tag = "[smart]"
+cmd_direct_tag = "[direct]"
+cmd_no_events = "No event rules. Add [[EventRule]] tables to settings."
+cmd_event_row = "{0}: [{1}] -> {2} cooldown: {3}s hits: {4}."
+cmd_routes = "Mode: {0}. Routes in use: {1}."
+cmd_none = "none"
+cmd_no_rule = "No rule named '{0}'."
+cmd_bad_routes = "Unknown routes: {0}. Valid: {1}."
+cmd_routes_set = "Rule '{0}' routes: {1}."
+cmd_all = "all"
+cmd_route_mode = "Route mode is now {0}."
+cmd_need_line = "Give me a line, e.g. alerts test \"hello\"."
+cmd_smart_off = "Smart mode is off. Run 'alerts smart rules' first."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable Alerts without unloading it."
+use_regex = "Default for rules. Any rule with Regex = true uses .NET regular expressions."
+excludes = "Case-insensitive suppression substrings. Any match here cancels the alert."
+rules = "One chat rule per [[Rule]] table."
+rule_name = "Rule name, shown in listings and the log."
+rule_match = "Trigger substrings, or regexes with Regex = true."
+rule_routes = "Any of desktop, discord, telegram, file, beep. Empty means all."
+rule_beep = "Beep through the host when this rule fires."
+rule_smart = "Judge confirms against the prompt before alerting."
+rule_regex = "Read this rule's Match list as .NET regular expressions."
+rule_prompt = "Per-rule prompt override. Empty means the global Smart.Prompt."
+rule_prompt_file = "A file in data/ with the prompt. Wins over Prompt when set."
+event_rules = "One game-event rule per [[EventRule]] table."
+event_name = "Event rule name, shown in listings and the log."
+event_on = "Events to watch: died, respawned, explosion, hurt, health-below-N, disconnected, difficulty."
+event_routes = "Any of desktop, discord, telegram, file, beep. Empty means all."
+event_beep = "Beep through the host when this rule fires."
+event_cooldown = "Seconds before the same event fires again."
+route_mode = "fixed sends every alert to all its routes. model lets the judge pick a subset."
+priority_patterns = "Lines matching one of these skip the batch queue and judge at once."
+log_to_file = "Append matched lines to the log file in this plugin's data/ folder."
+log_file = "Log file name, resolved inside data/."
+discord_target = "Where the Discord alert goes: route:name and dm:owner-id entries, comma-separated. Empty means every channel that takes game chat."
+smart = "Everything the judge needs, in one table."
+smart_mode = "off fires rules directly. rules confirms Smart rules. full also judges the rest."
+smart_model = "Judge model as provider/model-id."
+smart_confidence = "Verdicts below this are dropped in full mode."
+smart_prompt = "What to watch for, in plain words. Empty means the built-in default."
+smart_prompt_file = "A file in data/ with the prompt. Wins over Prompt when set."
+smart_catchall_routes = "Where full-mode verdicts go."
+smart_batch = "Judge low-priority lines in batches to save calls."
+smart_batch_size = "Flush the batch at this many lines."
+smart_batch_seconds = "Flush the batch after this many seconds."
+smart_context = "Facts sent with each judge call. Empty means chat only."
+smart_owner = "The bot owner's name, sent as context when set."
+smart_history_lines = "Trailing chat lines sent as context."

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>DMCBK.OfficialPlugins.AutoRespond</AssemblyName>
+    <RootNamespace>DMCBK.OfficialPlugins.AutoRespond</RootNamespace>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <Version>2.0.1</Version>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AutoRespond.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DMCBK.PluginSdk" ExcludeAssets="runtime" />
+  </ItemGroup>
+</Project>

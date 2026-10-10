@@ -1,0 +1,6 @@
+# FollowPlayer settings (regenerated with commented defaults on first run if deleted).
+# Drive it with the console command: `follow start <player>` and `follow stop`.
+# Needs the entity and terrain features, and takes the exclusive movement lease while following.
+Enabled = true # Set to false to disable FollowPlayer without unloading it.
+Update_Limit = 1.5 # Minimum seconds between two re-paths toward the followed player.
+Stop_At_Distance = 3.0 # Stop moving once the followed player is closer than this many blocks.

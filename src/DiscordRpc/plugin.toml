@@ -1,0 +1,21 @@
+schema-version = 2
+kind = "compiled"
+target = "any"
+framework = "net10.0"
+dmcbk = ">=0.1.0-preview.6 <0.2.0"
+umpk = ">=0.9.0-beta.6 <0.10.0"
+needs = ["commands"]
+# Needs a Discord Application ID in settings.toml and a running Discord client on the same machine.
+# With no ApplicationId set the plugin self-disables and logs why.
+# See /man writing-plugins for what each manifest field means.
+id = "discord-rpc"
+version = "2.0.1"
+entry = "DMCBK.OfficialPlugins.DiscordRpc.dll"
+api-version = "1.0"
+
+man = ["discord-rpc"]
+
+[meta]
+description = "Shows what the client is doing as Discord rich presence."
+tags = ["discord", "presence", "status"]
+uses = ["session", "network"]

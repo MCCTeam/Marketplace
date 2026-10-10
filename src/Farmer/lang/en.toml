@@ -1,0 +1,94 @@
+# Farmer's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+#
+# The Verbose_Debug trace is not here. Those lines name phases, waypoints and entity ids for someone
+# debugging the farming loop, not for a player to read. Only the prefix the Debug helper writes is a
+# string, and it is below as debug_line.
+
+# The farmer command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "Farms a crop methodically within a radius or selected area."
+command_usage = "farmer <start <crop> <radius [1-150]|area <x1> <y1> <z1> <x2> <y2> <z2>>|storage ...|stop>"
+usage_start_radius = "map and work a circular farm around the bot"
+usage_start_area = "map and work an inclusive box"
+usage_storage = "configure labelled storage"
+usage_storage_margin = "set the labelled-storage search margin"
+usage_storage_list = "show active storage configuration"
+usage_stop = "stop farming"
+
+already_running = "Farmer is already running."
+already_stopped = "Farmer is already stopped."
+stopping = "Farmer is stopping."
+stopped = "Farmer stopped."
+not_connected = "Not connected to a server."
+needs_terrain = "Farmer needs terrain handling."
+needs_inventory = "Farmer needs inventory handling."
+needs_entities = "Farmer needs entity handling to identify and collect crop drops."
+needs_physics = "Farmer needs physics handling to move between farm targets."
+
+# {0} is what the user typed, {1} the crops that exist.
+unknown_crop = "Unknown crop '{0}'. Try one of: {1}."
+
+# {0} is the crop, {1} the server's version, {2} the version it first appeared in.
+crop_unavailable = "{0} is unavailable on Minecraft {1}; it requires Minecraft {2} or newer."
+
+# {0} is who holds the movement lease, which is only ever another_plugin below.
+movement_lock_held = "Farmer could not take the movement lease; '{0}' holds it."
+another_plugin = "another plugin"
+
+# {0} is the crop, {1} the radius.
+started_radius = "Farmer started on {0} within a {1}-block radius."
+
+# {0} is the crop, {1} {2} {3} the first corner and {4} {5} {6} the second.
+started_area = "Farmer started on {0} in the area {1} {2} {3} to {4} {5} {6}."
+
+# {0} is how many blocks the area holds, {1} the maximum.
+area_too_large = "The selected area contains {0} blocks; the maximum is {1}."
+
+# {0} is how many farm sites were found, {1} how many cells were scanned.
+mapped = "Farmer: mapped {0} farm site(s) from {1} bounded block cells."
+
+# {0} is how many.
+planted = "Farmer: planted {0} seed(s)."
+harvested = "Farmer: harvested {0} crop(s)."
+bone_mealed = "Farmer: bone mealed {0} crop(s)."
+collected = "Farmer: collected or conclusively handled {0} relevant dropped item(s)."
+
+# {0} is the block, {1} {2} {3} where it stood, {4} the running total.
+harvested_one = "Farmer: harvested {0} at {1} {2} {3} ({4} so far)."
+
+# The storage subcommand.
+storage_summary = "Bonemeal='{0}' ({1}); Seeds='{2}' ({3}); Crops='{4}' ({5}); margin={6}"
+storage_unset = "sign search"
+storage_label_empty = "Storage label cannot be empty."
+storage_coordinates_invalid = "Coordinates must be three whole numbers: x y z."
+storage_margin_range = "Storage margin must be between 1 and 128 blocks."
+storage_label_saved = "Storage label saved."
+storage_position_saved = "Storage position saved."
+storage_position_cleared = "Storage position cleared; sign search will be used."
+storage_margin_saved = "Storage margin saved."
+
+# The prefix on every Verbose_Debug line. {0} is the diagnostic.
+debug_line = "[Farmer debug] {0}"
+
+loop_error = "Farmer: the farming loop stopped on an error."
+walk_to_drop_failed = "Farmer: could not walk to dropped item."
+
+# {0} is the target that could not be reached.
+navigation_failed = "Farmer: navigation to {0} failed."
+exact_navigation_failed = "Farmer: exact navigation to {0} failed."
+
+# {0} is the block position.
+dig_failed = "Farmer: dig request failed at {0}."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable Farmer without unloading it."
+delay_between_tasks = "Seconds to wait between farming cycles. Clamped to at least 1.0."
+verbose_debug = "Write detailed Farmer diagnostics for every phase, target, movement attempt and item sweep."
+storage_search_margin = "Blocks beyond the farm bounds searched for labelled storage."
+bonemeal_chest_name = "Exact case-insensitive sign label for bone meal storage."
+seeds_chest_name = "Exact case-insensitive sign label for seed storage."
+crops_chest_name = "Exact case-insensitive sign label for crop storage."
+bonemeal_chest_coordinates = "Optional chest coordinates, formatted as x y z. Empty uses sign discovery."
+seeds_chest_coordinates = "Optional chest coordinates, formatted as x y z. Empty uses sign discovery."
+crops_chest_coordinates = "Optional chest coordinates, formatted as x y z. Empty uses sign discovery."

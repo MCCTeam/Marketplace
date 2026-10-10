@@ -1,0 +1,5 @@
+# ChatLog settings (regenerated with commented defaults on first run if deleted).
+Enabled = false # Set to false to disable ChatLog without unloading it.
+Add_DateTime = true # Prepend a yyyy-MM-dd HH:mm:ss timestamp to every logged line.
+Log_File = "chatlog-%username%-%serverip%.txt" # Log file inside this plugin's data/ folder. %username% and %serverip% are expanded.
+Filter = "messages" # all, messages, chat, private_chat or internal_msg.

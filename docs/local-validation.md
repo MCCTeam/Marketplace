@@ -1,0 +1,26 @@
+# Local validation
+
+Validated on Linux x64 with .NET SDK `10.0.401`, published DMCBK `0.1.0-preview.6` and published UMPK `0.9.0-beta.6`. NuGet.org was the only package source. Fresh package caches and package repository metadata confirmed the exact published releases.
+
+| Check | Result |
+| --- | --- |
+| Clean Release build | Passed, zero warnings and errors |
+| Plugin tests | 773 passed, zero failed or skipped |
+| Test-count guard | Passed; the four excluded plugins account for 37 removed cases |
+| Release tooling tests | 15 passed |
+| Formatting | Applied and verified |
+| Workflow validation | Passed with actionlint 1.7.12 |
+| Marketplace metadata | Both retained and generated indexes passed MCC's validator |
+| Release archives | All 25 passed checksum, path and metadata checks |
+| Clean-host archive loading | All 25 loaded and activated through published DMCBK packages |
+| Scripted session | Passed with all 25 archive plugins loaded |
+| Cross-builds | All 11 supported Windows, Linux glibc/musl and macOS targets passed |
+| Independent templates | Compiled and mixed examples built outside the source checkouts |
+
+The ordinary test project's OpenAI preload masked a missing dependency in the original archive output. The clean-host check exposed it. DMCBK `0.1.0-preview.6` fixes packaging and loading of the private `System.ClientModel` and `System.Memory.Data` dependencies. CI now runs that archive check before release.
+
+The archive session uses protocol frames in memory. It does not prove gameplay on a live Minecraft server. External AI-provider calls were disabled. Cross-builds do not establish native execution on other operating systems or architectures; the CI runtime matrix provides those checks when it runs.
+
+MCC `feat/mcc-2.0` also passed a clean Release build, all 915 CLI tests, localization, documentation checks, a documentation build, Linux distribution publishing and its help smoke test with DMCBK preview.6. The DMCBK release itself passed all three operating-system builds and test jobs before NuGet publication.
+
+Full local logs and archive digests are under `/tmp/marketplace-validation` and `/tmp/mcc-preview6-validation`. Rehearsal archives are not committed or published plugin releases.

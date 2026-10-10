@@ -1,0 +1,13 @@
+# AutoRelog settings (regenerated with commented defaults on first run if deleted).
+# AutoRelog only acts once the core reconnect supervisor (connection.reconnect.* in client.toml) has stood
+# down, so the two never fight: while the core is reconnecting the client sits in Reconnecting and this
+# plugin stays idle.
+Enabled = true # Set to false to disable AutoRelog without unloading it.
+Retries = 3 # Rejoin attempts before giving up. -1 means unlimited. The budget resets after a stable join.
+Ignore_Kick_Message = false # Rejoin on any unexpected disconnect, ignoring Kick_Messages.
+# Case-insensitive substrings of the kick message that trigger a rejoin.
+Kick_Messages = [ "Connection has been lost", "Server is restarting", "Server is full", "Too Many people" ]
+# Seconds to wait before rejoining. A fresh random value in [min, max] is drawn each time.
+[Delay]
+min = 3.0
+max = 3.0

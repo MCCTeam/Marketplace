@@ -1,0 +1,22 @@
+# RemoteControl's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+
+no_owners = "RemoteControl: no bot owners are configured, so no remote command will ever be accepted. Set permissions.bot-owners in client.toml."
+
+# {0} is the sender, {1} the command line they sent.
+running = "RemoteControl: running '{1}' for {0}."
+
+# {0} is the sender.
+rejected = "RemoteControl: ignoring a private message from {0}."
+accepting = "RemoteControl: accepting a teleport request from {0}."
+
+send_failed = "RemoteControl: could not send the reply."
+
+# Whispered back when the command said nothing itself.
+ok = "Done."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable RemoteControl without unloading it."
+auto_tpaccept = "Automatically accept teleport requests (still restricted to bot owners by default)."
+auto_tpaccept_everyone = "Accept teleport requests from ANY player, not only from the bot owners."

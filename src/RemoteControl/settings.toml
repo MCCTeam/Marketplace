@@ -1,0 +1,5 @@
+# RemoteControl settings (regenerated with commented defaults on first run if deleted).
+# Only players listed in permissions.bot-owners (client.toml) may run commands through this plugin.
+Enabled = false # Set to false to disable RemoteControl without unloading it.
+AutoTpaccept = true # Automatically accept teleport requests (still restricted to bot owners by default).
+AutoTpaccept_Everyone = false # Accept teleport requests from ANY player, not only from the bot owners.

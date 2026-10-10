@@ -1,0 +1,19 @@
+schema-version = 2
+kind = "compiled"
+target = "any"
+framework = "net10.0"
+dmcbk = ">=0.1.0-preview.6 <0.2.0"
+umpk = ">=0.9.0-beta.6 <0.10.0"
+needs = ["commands"]
+# RemoteControl - runs MCC commands whispered to you by players you have allowed.
+id = "remote-control"
+version = "2.0.1"
+entry = "DMCBK.OfficialPlugins.RemoteControl.dll"
+api-version = "1.0"
+
+man = ["remote-control"]
+
+[meta]
+description = "Runs MCC commands sent to you as a whisper by players you have allowed."
+tags = ["chat", "commands", "remote"]
+uses = ["chat", "commands"]

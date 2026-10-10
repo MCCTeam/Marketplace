@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <data name="pack.official-name" xml:space="preserve">
+    <value>MCC Marketplace</value>
+  </data>
+  <data name="pack.usage" xml:space="preserve">
+    <value>PluginPack validate &lt;source-root&gt;
+PluginPack pack &lt;plugin-folder&gt; &lt;payload-folder&gt; &lt;output-folder&gt; &lt;source|compiled&gt; &lt;target&gt; &lt;release-base-url&gt; [provided-assembly-name ...]
+PluginPack catalogue &lt;fragment-root&gt; &lt;catalogue-directory&gt;
+PluginPack index &lt;source-root&gt; &lt;catalogue-directory&gt; &lt;index-path&gt;
+PluginPack verify-assets &lt;catalogue-path&gt;</value>
+  </data>
+</root>

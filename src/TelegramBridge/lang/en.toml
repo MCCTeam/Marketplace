@@ -1,0 +1,54 @@
+# TelegramBridge's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+#
+# The message templates are not here. A user edits them in settings.toml, so they belong to the settings
+# class rather than to a translation.
+
+# The tgbridge command, as /help reads it. command_usage is a grammar, not a sentence.
+command_desc = "Control which way the Telegram bridge relays."
+command_usage = "tgbridge direction <both|mc|telegram>"
+
+missing_token = "TelegramBridge is disabled: no bot token is configured. Create a bot with @BotFather and put its token in settings.toml."
+missing_channel_id = "TelegramBridge: no ChannelId is configured, so nothing will be relayed out. Send '.chatid' to the bot to learn the id of a chat."
+
+# {0} is the linked variable name.
+token_env_missing = "TelegramBridge is disabled: token links to env:{0}, which is not set."
+missing_authorized_chats = "TelegramBridge: Authorized_Chat_Ids is empty, so no chat may relay into the game or run commands."
+disabled_short = "TelegramBridge is disabled; check its token in settings.toml."
+
+connected = "TelegramBridge: connected."
+canceled_sending = "TelegramBridge: a message could not be sent."
+
+# {0} is the failure the Telegram library reported.
+unknown_error = "TelegramBridge: could not start the bot: {0}"
+polling_error = "TelegramBridge: Telegram reported an error: {0}"
+
+# {0} is the chat that was turned away.
+unauthorized = "TelegramBridge: rejected a message from unauthorized chat {0}."
+
+# What the bridge posts into the Telegram chat.
+connected_notice = "Minecraft Console Client connected."
+disconnected_notice = "Minecraft Console Client disconnected."
+unauthorized_reply = "This chat is not authorized to control the client."
+quit_disabled = "Quitting the client from chat is disabled."
+
+# {0} is what the command answered.
+command_executed = "Command executed:\n\n{0}"
+
+# {0} is the chat's own id, the answer to '.chatid'.
+chat_id_reply = "Chat ID: {0}"
+
+# {0} is one of the three directions below.
+direction = "The bridge now relays: {0}."
+direction_both = "Minecraft and Telegram"
+direction_minecraft = "Telegram into Minecraft only"
+direction_telegram = "Minecraft into Telegram only"
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable TelegramBridge without unloading it."
+token = "Bot token from @BotFather, or env:NAME to read it from the environment. Required; the plugin self-disables without it."
+channel_id = "Chat or channel id the game chat is relayed to. Send '.chatid' to the bot to learn it."
+authorized_chat_ids = "Chat ids allowed to relay into the game and run commands. Empty authorizes nobody."
+message_send_timeout = "Seconds a Telegram send may take before it is abandoned. Below 1 falls back to 3."
+formats = "Message templates. Placeholders: {username} {message} {timestamp}"

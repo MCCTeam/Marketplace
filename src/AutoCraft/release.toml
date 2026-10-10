@@ -1,0 +1,6 @@
+schema-version = 2
+
+[[assets]]
+kind = "compiled"
+target = "any"
+entry = "DMCBK.OfficialPlugins.AutoCraft.dll"

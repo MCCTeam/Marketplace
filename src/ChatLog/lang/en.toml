@@ -1,0 +1,21 @@
+# ChatLog's own strings, in English. Copy to lang/<language>.toml to translate; keep the keys.
+# A key must come before any [table] header, or it is read as part of that table.
+#
+# The log records themselves ("Chat bob: hello") are not here. Their format is fixed, so a reader
+# parsing an old log does not break when these strings are translated.
+
+# {0} is the configured file name.
+invalid_file = "ChatLog: invalid log file name '{0}'; the plugin stays idle."
+write_failed = "ChatLog: could not append to '{0}'."
+
+# {0} is the filter spelling that was not recognised.
+unknown_filter = "ChatLog: unknown filter '{0}'; using 'messages'."
+
+internal_unavailable = "ChatLog: the internal_msg filter has no successor in the new command system; internal command results are not logged."
+
+# The [settings] values below feed settings.toml comments through $settings.<key>$.
+[settings]
+enabled = "Set to false to disable ChatLog without unloading it."
+add_datetime = "Prepend a yyyy-MM-dd HH:mm:ss timestamp to every logged line."
+log_file = "Log file inside this plugin's data/ folder. %username% and %serverip% are expanded."
+filter = "all, messages, chat, private_chat or internal_msg."

@@ -1,0 +1,14 @@
+# TelegramBridge settings (regenerated with commented defaults on first run if deleted).
+# Create a bot with @BotFather, put its token below, then send '.chatid' to the bot from the chat you want
+# to bridge and copy the id it replies with into ChannelId and Authorized_Chat_Ids.
+# With Token empty the plugin self-disables and logs why.
+Enabled = true # Set to false to disable TelegramBridge without unloading it.
+Token = "" # Bot token from @BotFather. Required; the plugin self-disables without it.
+ChannelId = "" # Chat or channel id the game chat is relayed to. Send '.chatid' to the bot to learn it.
+# Chat ids allowed to relay into the game and run commands. Empty authorizes nobody.
+Authorized_Chat_Ids = []
+Message_Send_Timeout = 3 # Seconds a Telegram send may take before it is abandoned. Below 1 falls back to 3.
+# Message templates. Placeholders: {username} {message} {timestamp}
+PrivateMessageFormat = "*(Private Message)* {username}: {message}"
+PublicMessageFormat = "{username}: {message}"
+TeleportRequestMessageFormat = "A new Teleport Request from **{username}**!"

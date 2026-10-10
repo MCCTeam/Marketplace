@@ -1,0 +1,153 @@
+schema-version = 2
+id = "official"
+name = "MCC Marketplace"
+
+[[plugins]]
+id = "alerts"
+description = "Watches chat for rules you choose and game events, with optional LLM smart matching."
+tags = [ "chat", "alerts", "notifications", ]
+releases = "catalog/alerts.toml"
+
+[[plugins]]
+id = "anti-afk"
+description = "Does something small at intervals so the server does not count you as idle and disconnect you."
+tags = [ "idle", "movement", "chat", ]
+releases = "catalog/anti-afk.toml"
+
+[[plugins]]
+id = "auto-attack"
+description = "Attacks hostile mobs that come within reach, with the cooldown a player would have."
+tags = [ "combat", "entities", ]
+releases = "catalog/auto-attack.toml"
+
+[[plugins]]
+id = "auto-craft"
+description = "Crafts items from registered chests at a bench it finds itself."
+tags = [ "crafting", "inventory", ]
+releases = "catalog/auto-craft.toml"
+
+[[plugins]]
+id = "auto-dig"
+description = "Digs the block at the crosshair, or the positions you list."
+tags = [ "mining", "terrain", ]
+releases = "catalog/auto-dig.toml"
+
+[[plugins]]
+id = "auto-drop"
+description = "Throws away item types you do not want, as they arrive."
+tags = [ "inventory", "items", ]
+releases = "catalog/auto-drop.toml"
+
+[[plugins]]
+id = "auto-eat"
+description = "Eats when hunger drops below the level you set."
+tags = [ "survival", "inventory", "food", ]
+releases = "catalog/auto-eat.toml"
+
+[[plugins]]
+id = "auto-fishing"
+description = "Casts a fishing rod, spots the bite, reels in and casts again."
+tags = [ "fishing", "afk", "entities", ]
+releases = "catalog/auto-fishing.toml"
+
+[[plugins]]
+id = "auto-relog"
+description = "Reconnects after a kick, with a delay you choose."
+tags = [ "reconnect", "session", "resilience", ]
+releases = "catalog/auto-relog.toml"
+
+[[plugins]]
+id = "auto-respond"
+description = "Matches chat against patterns and answers, or runs an MCC command."
+tags = [ "chat", "automation", "rules", ]
+releases = "catalog/auto-respond.toml"
+
+[[plugins]]
+id = "chat-log"
+description = "Writes chat to a file, with a timestamp and a choice of formats."
+tags = [ "chat", "logging", "files", ]
+releases = "catalog/chat-log.toml"
+
+[[plugins]]
+id = "discord-bridge"
+description = "Relays game chat to a Discord channel and Discord messages back into the game."
+tags = [ "chat", "discord", "bridge", ]
+releases = "catalog/discord-bridge.toml"
+
+[[plugins]]
+id = "discord-rpc"
+description = "Shows what the client is doing as Discord rich presence."
+tags = [ "discord", "presence", "status", ]
+releases = "catalog/discord-rpc.toml"
+
+[[plugins]]
+id = "farmer"
+description = "Plants, bone meals, harvests and collects a crop over a radius or a chosen box."
+tags = [ "farming", "crops", "movement", ]
+releases = "catalog/farmer.toml"
+
+[[plugins]]
+id = "follow-player"
+description = "Walks after a player, keeping the distance you set."
+tags = [ "movement", "players", "pathfinding", ]
+releases = "catalog/follow-player.toml"
+
+[[plugins]]
+id = "items-collector"
+description = "Walks onto dropped items nearby so they get picked up."
+tags = [ "items", "movement", "pickup", ]
+releases = "catalog/items-collector.toml"
+
+[[plugins]]
+id = "llm-core"
+description = "Shared provider access for plugins. Ships the llm management command, nothing else."
+tags = [ "ai", "llm", ]
+releases = "catalog/llm-core.toml"
+
+[[plugins]]
+id = "llm-test"
+description = "Drives the shared LLM service and writes results to data/ for tests."
+tags = [ "ai", "test", ]
+releases = "catalog/llm-test.toml"
+
+[[plugins]]
+id = "map"
+description = "Keeps the maps the server sends and presents them through the host or exports them to a file."
+tags = [ "maps", "rendering", "images", ]
+releases = "catalog/map.toml"
+
+[[plugins]]
+id = "mcp-server"
+description = "Exposes the live game session as an MCP server (Streamable HTTP) for external AI agents."
+tags = [ "ai", "mcp", "network", ]
+releases = "catalog/mcp-server.toml"
+
+[[plugins]]
+id = "player-list-logger"
+description = "Records who is online, and when they join or leave."
+tags = [ "logging", "players", "files", ]
+releases = "catalog/player-list-logger.toml"
+
+[[plugins]]
+id = "remote-control"
+description = "Runs MCC commands sent to you as a whisper by players you have allowed."
+tags = [ "chat", "commands", "remote", ]
+releases = "catalog/remote-control.toml"
+
+[[plugins]]
+id = "replay-capture"
+description = "Records the session as a ReplayMod .mcpr file."
+tags = [ "recording", "replaymod", "files", ]
+releases = "catalog/replay-capture.toml"
+
+[[plugins]]
+id = "script-scheduler"
+description = "Runs lists of MCC commands on login, when the server shows a dialog, at set times of day, or on a repeating interval."
+tags = [ "automation", "commands", "schedule", ]
+releases = "catalog/script-scheduler.toml"
+
+[[plugins]]
+id = "telegram-bridge"
+description = "Relays game chat to a Telegram chat and messages back into the game."
+tags = [ "chat", "telegram", "bridge", ]
+releases = "catalog/telegram-bridge.toml"

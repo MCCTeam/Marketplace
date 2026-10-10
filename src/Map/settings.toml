@@ -1,0 +1,15 @@
+# Map settings (regenerated with commented defaults on first run if deleted).
+# Drive it with the console command: `maps list` and `maps render <id>`.
+# Rendered files are written to this plugin's data/Rendered_Maps folder.
+Enabled = true # Set to false to disable Map without unloading it.
+Render_In_Console = true # Print the map to the console as coloured half-blocks.
+Save_To_File = false # Write the map to a .bmp in this plugin's data/Rendered_Maps folder.
+Auto_Render_On_Update = false # Render on every map update instead of only on 'maps render <id>'.
+Delete_All_On_Unload = true # Clear previously rendered map files when the plugin starts (and on unload).
+Notify_On_First_Update = true # Log a line the first time each map id is received.
+Rasize_Rendered_Image = false # Resize the saved image to Resize_To x Resize_To pixels (legacy spelling kept).
+Resize_To = 512 # Edge length in pixels for the resize. Must be positive; falls back to 128.
+# Hand the rendered image to the bridge plugins (they must be loaded and connected).
+Send_Rendered_To_Discord = false
+Discord_Target = "" # Where the Discord render goes: route:name and dm:owner-id entries, comma-separated. Empty means every channel that takes game chat.
+Send_Rendered_To_Telegram = false
