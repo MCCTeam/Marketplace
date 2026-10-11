@@ -9,7 +9,7 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>0.2.2</Version>
+    <Version>0.2.3</Version>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>

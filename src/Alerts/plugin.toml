@@ -2,19 +2,19 @@ schema-version = 2
 kind = "compiled"
 target = "any"
 framework = "net10.0"
-dmcbk = ">=0.1.0-preview.7 <0.2.0"
-umpk = ">=0.9.0-beta.6 <0.10.0"
+dmcbk = ">=0.1.0-preview.8 <0.2.0"
+umpk = ">=0.9.0-beta.7 <0.10.0"
 needs = ["commands"]
 # Alerts - watches chat and game events, routes matches to desktop, Discord, Telegram, file, or beep.
 id = "alerts"
-version = "3.0.2"
+version = "3.0.3"
 entry = "DMCBK.OfficialPlugins.Alerts.dll"
 api-version = "1.0"
 
 man = ["alerts"]
 
 [optional]
-llm-core = "^0.2.0"
+llm-core = "^0.2.3"
 
 [meta]
 description = "Watches chat for rules you choose and game events, with optional LLM smart matching."
