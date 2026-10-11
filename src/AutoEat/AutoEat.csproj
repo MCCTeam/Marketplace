@@ -8,7 +8,7 @@
     <RootNamespace>DMCBK.OfficialPlugins.AutoEat</RootNamespace>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <Version>2.0.2</Version>
+    <Version>2.0.3</Version>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>

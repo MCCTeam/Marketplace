@@ -84,4 +84,4 @@ Use **Release plugin** → **Run workflow** with the same annotated tag for a pa
 
 Set `yanked = true` to withdraw a bad release from ordinary new installs. Retain its catalogue record and archive for existing locks and rollback. A rollback restores plugin selections; it cannot undo game actions or external messages already sent by a plugin.
 
-The imported catalogue records refer to unavailable assets in the former repository. They remain yanked. The prepared patch versions publish new assets here and require DMCBK `0.1.0-preview.7` and UMPK `0.9.0-beta.6` or later within their declared ranges.
+The imported catalogue records refer to unavailable assets in the former repository. They remain yanked. The prepared patch versions publish new assets here and require DMCBK `0.1.0-preview.8` and UMPK `0.9.0-beta.7` or later within their declared ranges.

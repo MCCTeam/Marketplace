@@ -76,7 +76,7 @@ dotnet format Marketplace.slnx --verify-no-changes --no-restore
 python3 -m unittest discover -s tests/release -v
 ```
 
-For an existing clone, run `git submodule update --init --recursive`. Builds restore DMCBK `0.1.0-preview.7` and UMPK `0.9.0-beta.6` from NuGet.org. The UMPK and DMCBK submodules provide source references for development; they do not supply build dependencies. MCC-Skills supplies the shared agent skills through `.skills`, `.codex/skills`, `.agents/skills` and `.claude/skills`.
+For an existing clone, run `git submodule update --init --recursive`. Builds restore DMCBK `0.1.0-preview.8` and UMPK `0.9.0-beta.7` from NuGet.org. The UMPK and DMCBK submodules provide source references for development; they do not supply build dependencies. MCC-Skills supplies the shared agent skills through `.skills`, `.codex/skills`, `.agents/skills` and `.claude/skills`.
 
 | Folder | Contents |
 | --- | --- |

@@ -2,12 +2,12 @@ schema-version = 2
 kind = "compiled"
 target = "any"
 framework = "net10.0"
-dmcbk = ">=0.1.0-preview.7 <0.2.0"
-umpk = ">=0.9.0-beta.6 <0.10.0"
+dmcbk = ">=0.1.0-preview.8 <0.2.0"
+umpk = ">=0.9.0-beta.7 <0.10.0"
 needs = ["commands"]
 # See /man writing-plugins for what each manifest field means.
 id = "auto-craft"
-version = "2.0.2"
+version = "2.0.3"
 entry = "DMCBK.OfficialPlugins.AutoCraft.dll"
 api-version = "1.0"
 
